@@ -1,0 +1,84 @@
+---
+title: "Exploring Uncertainty with Bayesian ML"
+author: "Sam Weiss"
+date: "2017-10-23"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction:
+
+Bayesian machine learning techniques allow us to obtain a posterior density for individual predictions instead of just the mean. This additional information allows us to understand and explore the uncertainty involved. However not all uncertainties are the same; one could be certain the mean of a predicted value is a certain value but there could be high variance or one can not be certain of a particular prediction because the training set didn't include values like the predicted input. This post will explore these two types of uncertainty and see if:
+
+  1) these methods can calculate the variance of the dataset itself and 
+  2) how this compares with uncertainty of a value it hasn't seen before (low support regions in data)
+
+
+## Data Setup:
+
+I generated a dataset with the variance of $y$ as a function of $x$ but with zero mean as follows. 
+
+$$ x = sequence(-10,10,.1)$$
+$$ y = normal(0, sin(x) +2) $$
+
+
+```{r, results='hide', message=FALSE, warning=FALSE,echo=FALSE}
+library(bartMachine)
+library(ggplot2)
+```
+
+```{r, echo = FALSE}
+set.seed(1)
+x = seq(-10,10,.01)+rnorm(2001,0,.01)
+y = rnorm(2001,0,sin(x)+2)
+
+variance_dataset = data.frame(x, y)
+ggplot(variance_dataset, aes(x = x, y = y)) + geom_point() + theme_bw() + 
+  ggtitle('Original Dataset - Non-Constant Variance')
+```
+
+I will use bartMachine to model $y=f(x)$ and compute the standard deviations of predictions. BartMachine is a package that creates Bayesian Additive Regression Trees and offer the option to extract the posterior distribution of predictions.
+
+To determine 1) I will look at the standard deviation of predictions within the interval [-10,10] and compare with actual standard deviation. For 2) I will look at standard deviation of predictions below -10 and above 10 to see how it handles uncertainty with respect to 'unseen' observations.
+
+## Results:
+
+
+```{r pressure, echo=FALSE, message=FALSE, warning=FALSE}
+bart_variance = bartMachine(data.frame(x = x), y)
+
+new_x = seq(-15,15,.1)
+bart_sample_pred = bart_machine_get_posterior(bart_variance, data.frame(x = new_x))
+pred_stdev = apply(bart_sample_pred$y_hat_posterior_samples,1,sd)
+
+
+pred_stdev_data = data.frame(stdev = pred_stdev, x = new_x, type=rep('predicted',length(new_x)) )
+true_stdev_data = data.frame(stdev =  sin(x)+2, x = x, type=rep('true',length(x)) )
+true_pred_stdev_data = rbind(pred_stdev_data, true_stdev_data )
+
+
+ggplot(true_pred_stdev_data, aes(x = x, y = stdev, colour = type )) + geom_line() +geom_smooth() + theme_bw() + 
+  ggtitle('Predicted and Actual stdev vs x')
+
+```
+
+Above we can see the predicted standard deviation of bartMachine compared actual standard deviation from the data generating process. While the predicted standard deviation is much lower it does appear to follow the general pattern. Looking at a scatterplot of predicted vs actual standard deviation shows a general positive relationship below. 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+ggplot(data.frame(true_stdev =sqrt( sin(new_x)+2), pred_stdev)[which(abs(new_x)<10),], aes(x = pred_stdev, y = true_stdev) ) + geom_point()+ theme_bw() + 
+  ggtitle('Predicted vs Actual stdev')
+```
+
+
+Also, the observations outside the sequence [-10,10] get a high variance compared with most other observations. Curiously the predicted standard deviation above 10 are larger than -10. I'm assuming this is just noise.
+
+
+
+## Conclusion:
+Bayesian ML techniques such as BART appear to be able to capture the variances in a dataset. While the values of predicted standard deviation are not calibrated they can be used as guidance to determine heteroskedastic nature of dataset. 
+
+In addition, those values outside the range of original training set have higher predicted variances. However, I'm not sure as to how to differentiate between high variance of the data generation process itself and low support of new dataset. 

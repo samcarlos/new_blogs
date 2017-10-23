@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.30.2" />
+
+
+<title>Posterior Predictions - Sweiss&#39; Blog</title>
+<meta property="og:title" content="Posterior Predictions - Sweiss&#39; Blog">
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="https://github.com/samcarlos">GitHub</a></li>
+    
+    <li><a href="/about/">Sam Weiss</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">1 min read</span>
+    
+
+    <h1 class="article-title">Posterior Predictions</h1>
+
+    
+    <span class="article-date">2017/10/23</span>
+    
+
+    <div class="article-content">
+      <pre><code class="language-r, echo=FALSE">plot(cars)
+</code></pre>
+
+<p>Poste</p>
+
+<pre><code class="language-r">library(bartMachine)
+library(ggplot2)
+set.seed(1)
+x = seq(-10,10,.01)
+y = rnorm(2001,0,sin(x)+2)
+
+variance_dataset = data.frame(x, y)
+plot1 = ggplot(variance_dataset, aes(x = x, y = y)) + geom_point() + theme_bw() + 
+  ggtitle('Original Dataset - Non-Constant Variance')
+print(x)
+plot(plot1)
+</code></pre>
+
+<pre><code class="language-r">fibonacci(10L)
+fibonacci(20L)
+</code></pre>
+
+<p>library(bartMachine)
+set.seed(1)
+x = seq(-10,10,.01)
+y = rnorm(2001,0,sin(x)+2)</p>
+
+<p>variance_dataset = data.frame(x, y)
+bart_variance = bartMachine(data.frame(x = x), y)</p>
+
+<p>new_x = seq(-15,15,.1)
+bart_sample_pred = bart_machine_get_posterior(bart_variance, data.frame(x = new_x))
+pred_stdev = apply(bart_sample_pred$y_hat_posterior_samples,1,sd)</p>
+
+<p>pred_stdev_data = data.frame(stdev = pred_stdev, x = new_x, type=rep(&lsquo;predicted&rsquo;,length(new_x)) )
+true_stdev_data = data.frame(stdev =  sin(x)+2, x = x, type=rep(&lsquo;true&rsquo;,length(x)) )
+true_pred_stdev_data = rbind(pred_stdev_data, true_stdev_data )</p>
+
+<p>ggplot(variance_dataset, aes(x = x, y = y)) + geom_point() + theme_bw() +
+  ggtitle(&lsquo;Original Dataset - Non-Constant Variance&rsquo;)</p>
+
+<p>ggplot(true_pred_stdev_data, aes(x = x, y = stdev, colour = type )) + geom_line() +geom_smooth() + theme_bw() +
+  ggtitle(&lsquo;Predicted and Actual stdev vs x&rsquo;)</p>
+
+<p>ggplot(data.frame(true_stdev =sqrt( sin(new_x)+2), pred_stdev)[which(abs(new_x)&lt;10),], aes(x = pred_stdev, y = true_stdev) ) + geom_point()+ theme_bw() +
+  ggtitle(&lsquo;Predicted vs Actual stdev&rsquo;)</p>
+
+<p>lm(true_stdev ~ pred_stdev, data = data.frame(true_stdev = sin(new_x)+2, pred_stdev)[which(abs(new_x)&lt;10),])</p>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+
