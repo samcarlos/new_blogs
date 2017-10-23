@@ -34,3 +34,5 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     height = 50
     alt = "Logo"
 
+[context.production.environment]
+    HUGO_VERSION = "0.30.2"
