@@ -6,10 +6,29 @@
     <description>Recent content on Sweiss&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 23 Oct 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 29 Oct 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Auto Sales Prediction October 2017</title>
+      <link>/2017/10/29/auto-sales-prediction-october-2017/</link>
+      <pubDate>Sun, 29 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/10/29/auto-sales-prediction-october-2017/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>October 2017 Auto Sales Predictions</title>
+      <link>/2017/10/29/october-2017-auto-sales-predictions/</link>
+      <pubDate>Sun, 29 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/10/29/october-2017-auto-sales-predictions/</guid>
+      <description>Below are predictions for 10-2017 autosales for each auto brand. I modeled monthley car sales by nameplate (eg Camry, Civic, etc), predicted one step ahead forecast and summed by manufacture. The model is a state-space model with trend and seasonality of 12.
+  Manufacturers 2017-10-01    Acura 13434  Alfa 4174  Audi 19463  Bentley 147  BMW 24671  Buick 16098  Cadillac 16087  Chevrolet 188386  Chrysler 11397  Dodge 31470  Fiat 1889  Ford 201647  Genesis 2911  GMC 49994  Honda 117972  Hyundai 48862  Infinit 2597  Infiniti 12237  Jaguar 3599  Jeep 65997  Kia 54669  Land 7680  Lexus 27738  Lincoln 8837  Maserati 1024  Mazda 22668  Mercedes 20358  Mercedes-Benz 10691  Mini 3702  Mitsubishi 8867  Nissan 104120  Porsche 4199  Ram 45534  Scion 0  Smart 170  Subaru 53947  Tesla 4553  Toyota 185563  Volvo 10906  VW 28004    </description>
+    </item>
     
     <item>
       <title>Exploring Uncertainty with Bayesian ML</title>

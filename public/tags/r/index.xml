@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Sweiss&#39; Blog</title>
-    <link>/post/</link>
-    <description>Recent content in Posts on Sweiss&#39; Blog</description>
+    <title>R on Sweiss&#39; Blog</title>
+    <link>/tags/r/</link>
+    <description>Recent content in R on Sweiss&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 29 Oct 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Auto Sales Prediction October 2017</title>
-      <link>/2017/10/29/auto-sales-prediction-october-2017/</link>
-      <pubDate>Sun, 29 Oct 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/2017/10/29/auto-sales-prediction-october-2017/</guid>
-      <description></description>
-    </item>
     
     <item>
       <title>October 2017 Auto Sales Predictions</title>
@@ -28,15 +19,6 @@
       <guid>/2017/10/29/october-2017-auto-sales-predictions/</guid>
       <description>Below are predictions for 10-2017 autosales for each auto brand. I modeled monthley car sales by nameplate (eg Camry, Civic, etc), predicted one step ahead forecast and summed by manufacture. The model is a state-space model with trend and seasonality of 12.
   Manufacturers 2017-10-01    Acura 13434  Alfa 4174  Audi 19463  Bentley 147  BMW 24671  Buick 16098  Cadillac 16087  Chevrolet 188386  Chrysler 11397  Dodge 31470  Fiat 1889  Ford 201647  Genesis 2911  GMC 49994  Honda 117972  Hyundai 48862  Infinit 2597  Infiniti 12237  Jaguar 3599  Jeep 65997  Kia 54669  Land 7680  Lexus 27738  Lincoln 8837  Maserati 1024  Mazda 22668  Mercedes 20358  Mercedes-Benz 10691  Mini 3702  Mitsubishi 8867  Nissan 104120  Porsche 4199  Ram 45534  Scion 0  Smart 170  Subaru 53947  Tesla 4553  Toyota 185563  Volvo 10906  VW 28004    </description>
-    </item>
-    
-    <item>
-      <title>Exploring Uncertainty with Bayesian ML</title>
-      <link>/2017/10/23/exploring-uncertainty-with-bayesian-ml/</link>
-      <pubDate>Mon, 23 Oct 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/2017/10/23/exploring-uncertainty-with-bayesian-ml/</guid>
-      <description>Introduction: Bayesian machine learning techniques allow us to obtain a posterior density for individual predictions instead of just the mean. This additional information allows us to understand and explore the uncertainty involved. However not all uncertainties are the same; one could be certain the mean of a predicted value is a certain value but there could be high variance or one can not be certain of a particular prediction because the training set didn’t include values like the predicted input.</description>
     </item>
     
   </channel>
