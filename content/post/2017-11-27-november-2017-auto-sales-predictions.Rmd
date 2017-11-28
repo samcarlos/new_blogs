@@ -1,8 +1,12 @@
 ---
-title: "November 2017 Auto Sales Predictions"
-author: "Sam Weiss"
-date: "11/27/2017"
-output: html_document
+title: November 2017 Auto Sales Predictions
+author: Sam Weiss
+date: '2017-11-27'
+slug: october-2017-auto-sales-predictions
+categories:
+  - Auto
+tags:
+  - R
 ---
 
 ```{r setup, include=FALSE}
@@ -20,10 +24,10 @@ Audi was the most accurate prediction.
 library(stargazer)
 library(knitr)
 load('/users/sweiss/google drive/autonews_market_data/predictions_results_10_2017.rdata')
-colnames(previous_values_agg_pred_table_results)[3] = 'Predicted_2017-10-01'
+colnames(previous_values_agg_pred_table_results)[2:3]=c('actual_10_2017','predicted_10_2017')
+prev_pred_table_results$ln_dff = round(log(prev_pred_table_results[,'acutal_values']/prev_pred_table_results[,'adjusted_preds']),2)
+
 kable(previous_values_agg_pred_table_results[order(previous_values_agg_pred_table_results[,4]),])
-colnames(previous_values_agg_pred_table_results)[2:3]=c('actual','predicted')
-prev_pred_table_results$ln_dff = log(prev_pred_table_results[,'acutal_values']/prev_pred_table_results[,'adjusted_preds'])
 ```
 
 # November Predictions
