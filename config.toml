@@ -16,6 +16,10 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     name = "GitHub"
     url = "https://github.com/samcarlos"
 
+[[menu.main]]
+    name = "r-bloggers"
+    url = "https://www.r-bloggers.com/"
+
 [params]
     description = "A website I use to throw up my stats stuff"
 
