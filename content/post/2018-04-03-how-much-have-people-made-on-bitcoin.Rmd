@@ -1,4 +1,3 @@
-
 ---
 title: "How Much Have People Made on Bitcoin?"
 author: "Sam Weiss"

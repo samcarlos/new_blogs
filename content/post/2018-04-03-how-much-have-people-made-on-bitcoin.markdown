@@ -1,13 +1,12 @@
+
 ---
-title: How Much Have People Made on Bitcoin?
-author: Sam Weiss
-date: '2018-04-03'
-slug: how-much-have-people-made-on-bitcoin
-categories: []
-tags:
-  - Bitcoin
-  - R
+title: "How Much Have People Made on Bitcoin?"
+author: "Sam Weiss"
+date: "2018-04-03"
+tags: R
+output: html_document
 ---
+
 ## Intro:
 
 How much has bitcoin made Society? This post will calculate the realized gains of bitcoin (up to year 2013) as a measure of how much society has made off of bitcoin.
@@ -55,7 +54,7 @@ Below is a time series chart of market capitalization, realized gains, and unrea
 ## zoneinfo/America/Denver'
 ```
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-1.png)
+<img src="/post/2018-04-03-how-much-have-people-made-on-bitcoin_files/figure-html/unnamed-chunk-1-1.png" width="672" />
 
 It's interesting to note how realized gains does not increase or decrease significantly during the 'bubble' of mid 2012. 
 
