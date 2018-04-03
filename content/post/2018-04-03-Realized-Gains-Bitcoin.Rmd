@@ -53,6 +53,8 @@ It's interesting to note how realized gains does not increase or decrease signif
 
 By the end of 2012 people have made ~ $79 million dollars of realized gains on bitcoin. This compares with market capitalization of ~ $142 million. 
 
+[comments](https://scweiss.blogspot.com/2018/04/how-much-has-bitcoin-made-society.html)
+
 ## Example Data
 Below is an example transaction history for user_id = 1
 ```{r , echo=FALSE}
