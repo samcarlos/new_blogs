@@ -31,7 +31,10 @@ output: html_document
 <h2>Calculations / Results:</h2>
 <p>I obtained bitcoin transaction data with a package called <a href="https://github.com/citp/BlockSci">BlockSci</a>. I calculated the average purchase price of a particular user’s bitcoin holding calculate the realized / unrealized gains accordingly.</p>
 <p>Below is a time series chart of market capitalization, realized gains, and unrealized gains up to December 31 2012.</p>
+<pre class="r"><code>library(ggplot2)</code></pre>
 <pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.3.2</code></pre>
+<pre class="r"><code>load(&#39;/Users/sweiss/src/new_blogs/content/post/blog_data.rdata&#39;)
+gains_plot</code></pre>
 <pre><code>## Warning in as.POSIXlt.POSIXct(x): unknown timezone &#39;zone/tz/2018c.1.0/
 ## zoneinfo/America/Denver&#39;</code></pre>
 <p><img src="/post/2018-04-03-Realized-Gains-Bitcoin_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
