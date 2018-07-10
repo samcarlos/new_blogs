@@ -1,16 +1,75 @@
----
-draft: yes
-title: "Optimize for Expected Profit in Lift Models"
-author: "Sam Weiss"
-date: '2018-07-09'
-slug: optimize-for-expected-profit-in-lift-models
-tags: R
-categories: []
----
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.29" />
+
+
+<title>Optimize for Expected Profit in Lift Models - Sweiss&#39; Blog</title>
+<meta property="og:title" content="Optimize for Expected Profit in Lift Models - Sweiss&#39; Blog">
 
 
 
-<p><em>hete is the wild west of analytics. no wrong answers yet</em> - Bill Lattner</p>
+  
+
+
+
+
+
+
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="https://github.com/samcarlos">GitHub</a></li>
+    
+    <li><a href="/about/">Sam Weiss</a></li>
+    
+    <li><a href="https://www.r-bloggers.com/">r-bloggers</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">6 min read</span>
+    
+
+    <h1 class="article-title">Optimize for Expected Profit in Lift Models</h1>
+
+    
+    <span class="article-date">2018/07/09</span>
+    
+
+    <div class="article-content">
+      <p><em>hete is the wild west of analytics. no wrong answers yet</em> - Bill Lattner</p>
 <div id="intro" class="section level2">
 <h2>Intro</h2>
 <p>Generally lift models use a Qini coefficient to measure the performance of a model. However this metric is generally an indirect measure of what the user wants to achieve: profit. In this post I’ll discuss a measure of profitability in lift models. A neural network can optimize this cost function directly. A comparison between this method compared with a causal tree implementation shows promising results.</p>
@@ -72,3 +131,47 @@ categories: []
 <p>This post described a method to simulate profits in a real world lift model and the optimize it direclty. It shows promising results to existing techniques.</p>
 <p><a href="https://github.com/samcarlos/hete_post">Code</a> <a href="http://scweiss.blogspot.com/2018/07/comments-for-optimize-for-expected.html">Comments</a></p>
 </div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+

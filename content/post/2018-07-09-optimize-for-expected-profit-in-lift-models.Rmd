@@ -1,11 +1,10 @@
 ---
-title: Optimize for Expected Profit in Lift Models
-author: Sam Weiss
+title: "Optimize for Expected Profit in Lift Models"
+author: "Sam Weiss"
 date: '2018-07-09'
 slug: optimize-for-expected-profit-in-lift-models
+tags: R
 categories: []
-tags:
-  - R
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)

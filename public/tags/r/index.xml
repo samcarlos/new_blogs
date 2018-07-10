@@ -6,10 +6,81 @@
     <description>Recent content in R on Sweiss&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 03 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 09 Jul 2018 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Optimize for Expected Profit in Lift Models</title>
+      <link>/2018/07/09/optimize-for-expected-profit-in-lift-models/</link>
+      <pubDate>Mon, 09 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/07/09/optimize-for-expected-profit-in-lift-models/</guid>
+      <description>&lt;p&gt;&lt;em&gt;hete is the wild west of analytics. no wrong answers yet&lt;/em&gt; - Bill Lattner&lt;/p&gt;
+&lt;div id=&#34;intro&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Intro&lt;/h2&gt;
+&lt;p&gt;Generally lift models use a Qini coefficient to measure the performance of a model. However this metric is generally an indirect measure of what the user wants to achieve: profit. In this post I’ll discuss a measure of profitability in lift models. A neural network can optimize this cost function directly. A comparison between this method compared with a causal tree implementation shows promising results.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;current-lift-models&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Current lift models&lt;/h2&gt;
+&lt;p&gt;The goal of lift modeling (or Heterogeneous Treatment Effects ) is to assign an optimal action for a particular observation. This can be, among other things, targeted advertisement or price discrimination. There are several different formulations of lift models which include flip, causal trees, etc.&lt;/p&gt;
+&lt;p&gt;Essentially all try to estimate the interaction between covariates and the treatment. The most simple parameterized model is: &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;: response&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;: covariates&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;: randomly assigned treatment variable. Assumed to be binary here.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[y = \beta_{1}x + \beta_{2}t+ \beta_{3}t*x\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Here the treatment effect for a particular observation is &lt;span class=&#34;math inline&#34;&gt;\(\beta_{2+} \beta_{3}x\)&lt;/span&gt;. The key point here is that the treatment effect is now a function of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; which means we can see which observations are more or less effected than others.&lt;/p&gt;
+&lt;p&gt;Alternatively one can estimate a machine learning model &lt;span class=&#34;math inline&#34;&gt;\(y = f(t,x)\)&lt;/span&gt; and the treatment effect can be calculated &lt;span class=&#34;math display&#34;&gt;\[\hat{f}(t=1,x) - \hat{f}(t=0,x)\]&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;However there are a few issues estimating this accurately which has spun several methods to accurately estimate it.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;The heterogeneous treatment effect is probably very small. Indeed one may find that the treatment effect relative to main effect is so small it does not get split on in normal random forests / GBTs! This means we need a model to focus particularly on the treatment effect if we want the results to be useful.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;We can have potentially hundreds of covariates available to include interactions with. We have no idea a priori which covariates are important so usually we have to expand parameter space significantly. Also, we don’t necessarily have the functional form available so we may take into account nonlinear transformations to the data.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;We can’t compare the fitted treatment effect values to the ‘truth’. This is the biggest difference between lift models and normal prediction. In prediction settings we can set aside a test set and evaluate our predictions on known responses. Here we want to know the counterfactual; what would have happened if we gave an observation a different value, which lead us to the &lt;a href=&#34;https://en.wikipedia.org/wiki/Rubin_causal_model#The_fundamental_problem_of_causal_inference&#34;&gt;fundamental problem of causality&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;So to sum up; we’re trying to estimate a very noisy signal, distributed among a large number of covariates, and we can’t check our estimated model directly.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;metrics-to-use&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Metrics to use&lt;/h2&gt;
+&lt;p&gt;Ok 3) might be a bit of a stretch because there are metrics people can use to assess the performance of their model. One is qini coefficient.&lt;/p&gt;
+&lt;p&gt;This is a measure that observations with similar treatment effects and groups them into the treatment they were given. If these groups are very different then that is a good measure the model is.&lt;/p&gt;
+&lt;p&gt;One particular drawback among qini coefficient is that it focuses only on the rank ordering of predicted values. This can be an adequate measure when you care about ranking but there are limitations. The most important being that it does not assign an obvious cutoff between those affected and those not. In the next section I will describe the problem in terms of cost / benefit and suggest a different metric.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;a-new-kind-of-metric&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;A new kind of metric&lt;/h2&gt;
+&lt;p&gt;Suppose we have &lt;span class=&#34;math inline&#34;&gt;\(1...K\)&lt;/span&gt; options in the treatment and the goal is to assign the most profitable treatment for each observation. We have a model to assign an optimal treatment for observation &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;: &lt;span class=&#34;math inline&#34;&gt;\(optim_{i,k}\)&lt;/span&gt;. This takes the value 1 if &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; is best for observation &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; else it’s 0.The expected profit is:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[Expected Profit = \sum_{n=1}^{N}{I(t = optim_{i,k})* y_{i}(x,t=optim_{i,k})}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The problem is that we cannot assign and observe a treatment to our training data. Instead we can only look at the values we have. Instead I will ‘simulate’ an experiment the following way:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(AverageProfit = {\frac{\sum_{i=1}^{N}\sum_{k=1}^{K}{I(optim_{i,k} = t_{i,k})*y_{i}}}{\sum_{i=1}^{N}\sum_{k=1}^{K}{I(optim_{i} = t_{i,k})}}}\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Basically this is saying if the optimal results equal the randomly assigned treatment then we include those in our hypothetical model. Since I am assuming the treatment is randomly assigned I think this would give a good indicator on the average increase for each observations under this new models decisions. In order to test this out I compared the expected gain with the actual gain of a simulated dataset. Below is the scatterplot and it appears to be a pretty good metric for the actual results.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-07-09-optimize-for-expected-profit-in-lift-models_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;model-this-metric-directly&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Model this Metric Directly?&lt;/h2&gt;
+&lt;p&gt;If we have a measure that can accurately measure what we want, can we use it as a loss function? This should lead to a better model since the model will optimize over the metric of interest.&lt;/p&gt;
+&lt;p&gt;We cannot optimize this directly b/c the indicator function is non-differentiable. Instead replacing I() function with a probability and use the custom function below to maximize. - Thanks to &lt;a href=&#34;https://github.com/beckermr&#34;&gt;Matt Becker&lt;/a&gt; for this insight.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[CustomLoss = - \sum_{k=1}^{K}{\hat{p_{i,k}(x)}*I(t_i=k)*y_{i}}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;This is essentialy answering the question: what is the probability that action &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; is best for observation &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;?&lt;/p&gt;
+&lt;p&gt;Using Keras I &lt;a href=&#34;https://github.com/samcarlos/hete_post/blob/master/hete_optim.py#L40&#34;&gt;hacked together a prototype&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;experiment&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Experiment&lt;/h2&gt;
+&lt;p&gt;To test this new model (I’m calling it hete-optim) I simulated a similar dataset to that found in &lt;a href=&#34;https://arxiv.org/pdf/1707.00102.pdf&#34;&gt;this paper&lt;/a&gt;. There are 200 variables with 15,000 training set and 3,000 test set. Of these there are 8 different scenarios using several nonlinear functions from the explanatory variables. One major difference is that I binarized the response. In addition I increased the random noise and decreased the relative treatment effect to get a more ‘realistic’&lt;/p&gt;
+&lt;p&gt;I’m comparing this model which my former colleague, Bill Lattner, Developed &lt;a href=&#34;https://github.com/wlattner/hete&#34;&gt;hete&lt;/a&gt; and to &lt;a href=&#34;https://cran.r-project.org/web/packages/grf/index.html&#34;&gt;grf&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;results&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Results&lt;/h1&gt;
+&lt;p&gt;The Metric I’m comparing is profits with true model / profits with fitted model. So if a model get’s a score of .75 then that means that it captures 75% of potential gain using a lift model. This is sort of a normalized regret score so we aggregate results among the 8 scenarios. Below is a boxplot of scores by model type.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## Using  as id variables&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-07-09-optimize-for-expected-profit-in-lift-models_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;This method performs best on 7 out of 8 datasets. On average hete_opim gets ~99.8% of the gains while hete gets ~98.9% and grf is 99.5%. This suggests that this method might be on to something.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;conclusion&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Conclusion&lt;/h1&gt;
+&lt;p&gt;This post described a method to simulate profits in a real world lift model and the optimize it direclty. It shows promising results to existing techniques.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/samcarlos/hete_post&#34;&gt;Code&lt;/a&gt; &lt;a href=&#34;http://scweiss.blogspot.com/2018/07/comments-for-optimize-for-expected.html&#34;&gt;Comments&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>How Much Have People Made on Bitcoin?</title>
@@ -40,12 +111,9 @@
 &lt;h2&gt;Calculations / Results:&lt;/h2&gt;
 &lt;p&gt;I obtained bitcoin transaction data with a package called &lt;a href=&#34;https://github.com/citp/BlockSci&#34;&gt;BlockSci&lt;/a&gt;. I calculated the average purchase price of a particular user’s bitcoin holding calculate the realized / unrealized gains accordingly.&lt;/p&gt;
 &lt;p&gt;Below is a time series chart of market capitalization, realized gains, and unrealized gains up to December 31 2012.&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;ggplot2&amp;#39; was built under R version 3.3.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;load(&amp;#39;/Users/sweiss/src/new_blogs/content/post/blog_data.rdata&amp;#39;)
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
+load(&amp;#39;/Users/sweiss/src/new_blogs/content/post/blog_data.rdata&amp;#39;)
 gains_plot&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in as.POSIXlt.POSIXct(x): unknown timezone &amp;#39;zone/tz/2018c.1.0/
-## zoneinfo/America/Denver&amp;#39;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2018-04-03-Realized-Gains-Bitcoin_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;It’s interesting to note how realized gains does not increase or decrease significantly during the ‘bubble’ of mid 2012.&lt;/p&gt;
 &lt;p&gt;By the end of 2012 people have made ~ $79 million dollars of realized gains on bitcoin. This compares with market capitalization of ~ $142 million.&lt;/p&gt;
@@ -713,9 +781,6 @@ gains_plot&lt;/code&gt;&lt;/pre&gt;
 &lt;h2&gt;Calculations / Results:&lt;/h2&gt;
 &lt;p&gt;I obtained bitcoin transaction data with a package called &lt;a href=&#34;https://github.com/citp/BlockSci&#34;&gt;BlockSci&lt;/a&gt;. I calculated the average purchase price of a particular user’s bitcoin holding calculate the realized / unrealized gains accordingly.&lt;/p&gt;
 &lt;p&gt;Below is a time series chart of market capitalization, realized gains, and unrealized gains up to December 31 2012.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;ggplot2&amp;#39; was built under R version 3.3.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in as.POSIXlt.POSIXct(x): unknown timezone &amp;#39;zone/tz/2018c.1.0/
-## zoneinfo/America/Denver&amp;#39;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2018-04-03-asdf_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;It’s interesting to note how realized gains does not increase or decrease significantly during the ‘bubble’ of mid 2012.&lt;/p&gt;
 &lt;p&gt;By the end of 2012 people have made ~ $79 million dollars of realized gains on bitcoin. This compares with market capitalization of ~ $142 million.&lt;/p&gt;
