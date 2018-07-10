@@ -59,13 +59,13 @@ One particular drawback among qini coefficient is that it focuses only on the ra
 ##A new kind of metric
 
 
-Suppose we have $1...K$ options in the treatment and the goal is to assign the most profitable treatment for each observation. We have a model a assign an optimal treatment $optim$. The expected profit is: 
+Suppose we have $1...K$ options in the treatment and the goal is to assign the most profitable treatment for each observation. We have a model to assign an optimal treatment for observation $i$: $optim_{i,k}$. This takes the value 1 if $k$ is best for observation $i$ else it's 0.The expected profit is: 
 
-$$Expected Profit = \sum_{k=1}^{K}{I(optim_{i,k})*y_{i}(x,t=optim_{i,k})}$$
+$$Expected Profit = \sum_{n=1}^{N}{I(t = optim_{i,k})* y_{i}(x,t=optim_{i,k})}$$
 
 The problem is that we cannot assign and observe a treatment to our training data. Instead we can only look at the values we have. Instead I will 'simulate' an experiment the following way:
 
-$AverageProfit_{i} =  \frac{\sum_{i=k}^{K}{I(optim_{i} = t_{i})*y_{i}}}{\sum_{i=k}^{K}{I(optim_{i} = t_{i})}}$
+$AverageProfit =  {\frac{\sum_{i=1}^{N}\sum_{k=1}^{K}{I(optim_{i,k} = t_{i,k})*y_{i}}}{\sum_{i=1}^{N}\sum_{k=1}^{K}{I(optim_{i} = t_{i,k})}}}$
 
 Basically this is saying if the optimal results equal the randomly assigned treatment then we include those in our hypothetical model. Since I am assuming the treatment is randomly assigned I think this would give a good indicator on the average increase for each observations under this new models decisions. In order to test this out I compared the expected gain with the actual gain of a simulated dataset. Below is the scatterplot and it appears to be a pretty good metric for the actual results.  
 
@@ -87,11 +87,11 @@ ggplot(df_1, aes(x = df_1[,2], y = df_1[,1])) + geom_point() + xlab('Expected Pr
 
 If we have a measure that can accurately measure what we want, can we use it as a loss function? This should lead to a better model since the model will optimize over the metric of interest.
 
-We cannot optimize this directly b/c the indicator function is non-differentiable. Instead replacing I() function with a probability and use the custom loss function below. - Thanks to [Matt Becker](https://github.com/beckermr) for this insight. 
+We cannot optimize this directly b/c the indicator function is non-differentiable. Instead replacing I() function with a probability and use the custom function below to maximize. - Thanks to [Matt Becker](https://github.com/beckermr) for this insight. 
 
-$$profit_{i} =  \sum_{k=1}^{K}{\hat{p_{i,k}(x)}*I(t_i=k)*y_{i}}$$
+$$CustomLoss = - \sum_{k=1}^{K}{\hat{p_{i,k}(x)}*I(t_i=k)*y_{i}}$$
 
-
+This is essentialy answering the question: what is the probability that action $k$ is best for observation $i$?
 
 Using Keras I [hacked together a prototype](https://github.com/samcarlos/hete_post/blob/master/hete_optim.py#L40). 
 
