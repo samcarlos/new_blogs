@@ -43,7 +43,7 @@ I obtained bitcoin transaction data with a package called [BlockSci](https://git
 Below is a time series chart of market capitalization, realized gains, and unrealized gains up to December 31 2012. 
 
 
-```{r , echo=FALSE}
+```{r }
 library(ggplot2)
 load('/Users/sweiss/src/new_blogs/content/post/blog_data.rdata')
 gains_plot
