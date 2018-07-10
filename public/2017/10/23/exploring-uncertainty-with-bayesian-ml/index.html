@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Hugo 0.29" />
+<meta name="generator" content="Hugo 0.43" />
 
 
 <title>Exploring Uncertainty with Bayesian ML - Sweiss&#39; Blog</title>
@@ -16,11 +16,6 @@
 
 
 
-
-
-
-
-<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/github.min.css' rel='stylesheet' type='text/css' />
 
 
 
@@ -59,7 +54,7 @@
 
   <article class="article">
     
-    <span class="article-duration">3 min read</span>
+    <span class="article-duration">1 min read</span>
     
 
     <h1 class="article-title">Exploring Uncertainty with Bayesian ML</h1>
@@ -81,32 +76,6 @@
 <h2>Data Setup:</h2>
 <p>I generated a dataset with the variance of <span class="math inline">\(y\)</span> as a function of <span class="math inline">\(x\)</span> but with zero mean as follows.</p>
 <p><span class="math display">\[ x = sequence(-10,10,.1)\]</span> <span class="math display">\[ y = normal(0, sin(x) +2) \]</span></p>
-<p><img src="/post/2017-10-23-Exploring-Uncertainty-Bayes-ML_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<p>I will use bartMachine to model <span class="math inline">\(y=f(x)\)</span> and compute the standard deviations of predictions. BartMachine is a package that creates Bayesian Additive Regression Trees and offer the option to extract the posterior distribution of predictions.</p>
-<p>To determine 1) I will look at the standard deviation of predictions within the interval [-10,10] and compare with actual standard deviation. For 2) I will look at standard deviation of predictions below -10 and above 10 to see how it handles uncertainty with respect to ‘unseen’ observations.</p>
-</div>
-<div id="results" class="section level2">
-<h2>Results:</h2>
-<pre><code>## bartMachine initializing with 50 trees...
-## bartMachine vars checked...
-## bartMachine java init...
-## bartMachine factors created...
-## bartMachine before preprocess...
-## bartMachine after preprocess... 2 total features...
-## bartMachine sigsq estimated...
-## bartMachine training data finalized...
-## Now building bartMachine for regression ...
-## evaluating in sample data...done</code></pre>
-<p><img src="/post/2017-10-23-Exploring-Uncertainty-Bayes-ML_files/figure-html/pressure-1.png" width="672" /></p>
-<p>Above we can see the predicted standard deviation of bartMachine compared actual standard deviation from the data generating process. While the predicted standard deviation is much lower it does appear to follow the general pattern. Looking at a scatterplot of predicted vs actual standard deviation shows a general positive relationship below.</p>
-<p><img src="/post/2017-10-23-Exploring-Uncertainty-Bayes-ML_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<p>Also, the observations outside the sequence [-10,10] get a high variance compared with most other observations. Curiously the predicted standard deviation above 10 are larger than -10. I’m assuming this is just noise.</p>
-</div>
-<div id="conclusion" class="section level2">
-<h2>Conclusion:</h2>
-<p>Bayesian ML techniques such as BART appear to be able to capture the variances in a dataset. While the values of predicted standard deviation are not calibrated they can be used as guidance to determine heteroskedastic nature of dataset.</p>
-<p>In addition, those values outside the range of original training set have higher predicted variances. However, I’m not sure as to how to differentiate between high variance of the data generation process itself and low support of new dataset.</p>
-<p><a href="https://github.com/samcarlos/uncertainty_ml/blob/master/non_constant_variance_blogpost.R">Code Here</a></p>
 </div>
 
     </div>
@@ -130,18 +99,6 @@
 
     </div>
     
-
-
-
-<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
-
-
-
-<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
-<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
-<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
-
-
 
     
 <script src="/js/math-code.js"></script>
