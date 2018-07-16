@@ -60,7 +60,7 @@ One particular drawback among qini coefficient is that it focuses only on the ra
 
 Suppose we have $1...K$ options in the treatment and the goal is to assign the most profitable treatment for each observation. We have a model to assign an optimal treatment for observation $i$: $optim_{i,k}$. This takes the value 1 if $k$ is best for observation $i$ else it's 0.The expected profit is: 
 
-$Expected Profit = \sum_{n=1}^{N}{I(t = optim_{i,k})* y_{i}(x,t=optim_{i,k})}$
+$Expected Profit = \sum_{i=1}^{N}{I(t = optim_{i,k})* y_{i}(x,t=optim_{i,k})}$
 
 The problem is that we cannot assign and observe a treatment to our training data. Instead we can only look at the values we have. Instead I will 'simulate' an experiment the following way:
 
