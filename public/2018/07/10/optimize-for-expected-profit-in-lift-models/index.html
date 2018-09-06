@@ -100,7 +100,7 @@
 <div id="a-new-kind-of-metric" class="section level2">
 <h2>A new kind of metric</h2>
 <p>Suppose we have <span class="math inline">\(1...K\)</span> options in the treatment and the goal is to assign the most profitable treatment for each observation. We have a model to assign an optimal treatment for observation <span class="math inline">\(i\)</span>: <span class="math inline">\(optim_{i,k}\)</span>. This takes the value 1 if <span class="math inline">\(k\)</span> is best for observation <span class="math inline">\(i\)</span> else it’s 0.The expected profit is:</p>
-<p><span class="math inline">\(Expected Profit = \sum_{n=1}^{N}{I(t = optim_{i,k})* y_{i}(x,t=optim_{i,k})}\)</span></p>
+<p><span class="math inline">\(Expected Profit = \sum_{i=1}^{N}{I(t = optim_{i,k})* y_{i}(x,t=optim_{i,k})}\)</span></p>
 <p>The problem is that we cannot assign and observe a treatment to our training data. Instead we can only look at the values we have. Instead I will ‘simulate’ an experiment the following way:</p>
 <p><span class="math inline">\(AverageProfit = {\frac{\sum_{i=1}^{N}\sum_{k=1}^{K}{I(optim_{i,k} = t_{i,k})*y_{i}}}{\sum_{i=1}^{N}\sum_{k=1}^{K}{I(optim_{i} = t_{i,k})}}}\)</span></p>
 <p>Basically this is saying if the optimal results equal the randomly assigned treatment then we include those in our hypothetical model. Since I am assuming the treatment is randomly assigned I think this would give a good indicator on the average increase for each observations under this new models decisions. In order to test this out I compared the expected gain with the actual gain of a simulated dataset. Below is the scatterplot and it appears to be a pretty good metric for the actual results.</p>
