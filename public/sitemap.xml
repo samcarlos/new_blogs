@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/2019/06/30/test/</loc>
+    <lastmod>2019-06-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2019/06/30/tests/</loc>
+    <lastmod>2019-06-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/2018/07/10/optimize-for-expected-profit-in-lift-models/</loc>
     <lastmod>2018-07-10T00:00:00+00:00</lastmod>
   </url>
@@ -51,7 +61,7 @@
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2018-07-10T00:00:00+00:00</lastmod>
+    <lastmod>2019-06-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -63,7 +73,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2018-07-10T00:00:00+00:00</lastmod>
+    <lastmod>2019-06-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -71,6 +81,10 @@
     <loc>/tags/</loc>
     <lastmod>2018-07-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/1/01/01/test/</loc>
   </url>
   
 </urlset>

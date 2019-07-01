@@ -6,10 +6,28 @@
     <description>Recent content in Posts on Sweiss&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 30 Jun 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>test</title>
+      <link>/2019/06/30/test/</link>
+      <pubDate>Sun, 30 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/06/30/test/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tests</title>
+      <link>/2019/06/30/tests/</link>
+      <pubDate>Sun, 30 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/06/30/tests/</guid>
+      <description>summary(cars)  ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.:19.0 3rd Qu.: 56.00 ## Max. :25.0 Max. :120.00  Including Plots You can also embed plots, for example:</description>
+    </item>
     
     <item>
       <title>Optimize for Expected Profit in Lift Models</title>
@@ -71,6 +89,17 @@ Audi was the most accurate prediction.</description>
       
       <guid>/2017/10/23/exploring-uncertainty-with-bayesian-ml/</guid>
       <description>Introduction: Bayesian machine learning techniques allow us to obtain a posterior density for individual predictions instead of just the mean. This additional information allows us to understand and explore the uncertainty involved. However not all uncertainties are the same; one could be certain the mean of a predicted value is a certain value but there could be high variance or one can not be certain of a particular prediction because the training set didn’t include values like the predicted input.</description>
+    </item>
+    
+    <item>
+      <title>test</title>
+      <link>/1/01/01/test/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/1/01/01/test/</guid>
+      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
+When you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+summary(cars) ## speed dist ## Min.</description>
     </item>
     
   </channel>
