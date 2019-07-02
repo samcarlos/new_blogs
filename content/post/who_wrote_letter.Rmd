@@ -1,7 +1,7 @@
 ---
 title: "test"
 author: "Sam Weiss"
-date: "9/5/2018"
+date: "9-5-2018"
 output: html_document
 ---
 
