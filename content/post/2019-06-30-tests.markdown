@@ -21,9 +21,10 @@ summary(cars)
 ##  3rd Qu.:19.0   3rd Qu.: 56.00  
 ##  Max.   :25.0   Max.   :120.00
 ```
+![alt text here](users/sweiss/desktop/bjm))
 
 ## Including Plots
 
 You can also embed plots, for example:
 
-![plot of chunk pressure](figure/pressure-1.png)
+<img src="/post/2019-06-30-tests_files/figure-html/pressure-1.png" width="672" />

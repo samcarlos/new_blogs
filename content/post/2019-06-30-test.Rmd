@@ -3,6 +3,6 @@ title: test
 author: ''
 date: '2019-06-30'
 slug: test
-categories: []
-tags: []
+categories: ['r']
+tags: ['r']
 ---
