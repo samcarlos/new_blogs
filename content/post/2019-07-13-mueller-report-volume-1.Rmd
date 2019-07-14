@@ -1,21 +1,24 @@
 ---
 title: 'Mueller Report Volume 1: A Network Analysis'
 author: 'sweiss'
-date: '2019-07-16'
+date: '2019-07-15'
 slug: 'mueller-report-volume-1'
-categories: []
-tags: []
+categories: ['r']
+tags: ['r']
 ---
 
 
-![settle down and have another cup of coffee](/Users/sweiss/src/new_blogs/static/post/iws.jpg)
+
 ```{r setup, include=FALSE, echo=FALSE, results='asis'}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE,root.dir = "/Users/sweiss/src/new_blogs/content")
 
 ```
 
+
+![settle down and have another cup of coffee](/post/2019-07-13-mueller-report-volume-1_files/35aykq.jpg)
+
+
 ## TLDR 
-asdf
 There are a lot of Russian’s talking to a lot of Trump campaign members in Mueller report. There are so many it’s tough to get your head around it all. In this post I attempted some network analysis on the relations between campaign officials and Russians. I found that one can ‘compress’ Russian involvement into 9 (mostly) distinct groups. I then summarize these points of contacts. 
 
 ## Introduction to Mueller Report
@@ -32,12 +35,12 @@ Volume 1 consists of 199 pages including foot-notes and appendices. I found a ma
 There are some drawbacks to this in that OCR does not immediately distinguish sentences. In addition it often groups footnotes with last line of sentences in a page. But it seemed like a good starting point so went ahead. 
 
 Below are the top 20 most common occurring names.
-```{r freqplot, fig.width = 6,fig.height = 6, echo=FALSE, results='asis',fig.align='center', message = FALSE}
+```{r freqplot, fig.width = 7,fig.height = 7, echo=FALSE, results='asis', message = FALSE,warning=FALSE}
 library(ggplot2)
 load('/users/sweiss/src/mueller_report/data/mueller_plots.rdata')
 load('/users/sweiss/src/mueller_report/data/mueller_plots_slope_graph.rdata')
 plot(freq_occurances_plot+ggtitle('Frequency of Most Common Names in Volume 1')+theme(axis.text=element_text(size=12),
-        axis.title=element_text(size=14,face="bold"), plot.title = element_text(size=22)))
+        axis.title=element_text(size=14,face="bold"), plot.title = element_text(size=15)))
 ```
 
 
@@ -45,9 +48,9 @@ Papadopulos, Manafort, Kushner, Cohen, Trump JR, and Flynn are all in the top. C
 
 I then created an person x person matrix that counted the number of times a name co-occurs with another. I’m treating this as a weighted, undirected graph. I transformed this to a laplacian matrix and performed an eigen decomposition. This is known as a spectral analysis of a network. Below is the resulting image of 2nd to last and 3rd to last eigenvectors. 
 
-```{r allnetwork, fig.width = 6,fig.height = 6, echo=FALSE, results='asis',fig.align='center'}
+```{r allnetwork, fig.width = 7,fig.height = 7, echo=FALSE, results='asis',fig.align='center'}
 plot(mueller_network+theme(axis.text=element_text(size=12),
-        axis.title=element_text(size=14,face="bold"), plot.title = element_text(size=22)))
+        axis.title=element_text(size=14,face="bold"), plot.title = element_text(size=15)))
 ```
 
 WHOA … I’m getting a headache looking at this.
@@ -57,9 +60,9 @@ But it definitely looks like there is structure in the graph.  There appears to 
 What if we look at only the russians in the graph?
 
 
-```{r russian_network, fig.width = 6,fig.height = 6, echo=FALSE, results='asis',fig.align='center'}
+```{r russian_network, fig.width = 7,fig.height = 7, echo=FALSE, results='asis'}
 plot(russian_network+theme(axis.text=element_text(size=12),
-        axis.title=element_text(size=14,face="bold"), plot.title = element_text(size=22)))
+        axis.title=element_text(size=14,face="bold"), plot.title = element_text(size=15)))
 ```
 
 
@@ -68,18 +71,18 @@ Ok! Now we’re talking. There are 6 distinct clusters of Russians here. That me
 
 Finally, I gave up on trying to only use text analysis, read volume one, and manually created a network found here. With that I created groupings using the above chart as a starting point. I found 9 fairly distinct clusters of Russians. Below you can see the relationships between those groups and various members of the Trump campaign. 
 
-```{r slope_plot, fig.width = 6,fig.height = 10, echo=FALSE, results='asis',fig.align='center'}
+```{r slope_plot, fig.width = 7,fig.height = 10, echo=FALSE, results='asis'}
 plot(slope_graph_g+theme(axis.text=element_text(size=12),
-        axis.title=element_text(size=14,face="bold"), plot.title = element_text(size=22)))
+        axis.title=element_text(size=14,face="bold"), plot.title = element_text(size=15)))
 
 ```
 
 I then further grouped them into 4 broad categories which I’ve named; Trump Business, The Opportunists, The Professionals, and Russian Officials and Lackeys. I also included whether a trump campaign officials interaction was of first degree (they were in meeting or talked explicitly with Russian Group in question) or second degree (they were aware of meeting). Below are my summaries for each. 
 
 #Trump Business
-```{r business, fig.width = 6,fig.height = 6, echo=FALSE, results='asis',fig.align='center'}
+```{r business, fig.width = 7,fig.height = 7, echo=FALSE, results='asis'}
 plot(ts_plots_by_cat[['Trump Business']]+theme(axis.text=element_text(size=12),
-        axis.title=element_text(size=14,face="bold"), plot.title = element_text(size=22)))
+        axis.title=element_text(size=14,face="bold"), plot.title = element_text(size=18)))
 ```
 
 * *Group 1*
@@ -103,9 +106,9 @@ Finally, due to the slowness of progress in Trump Tower Moscow deal from Group 2
 During campaign the Emin Agalorov, at the behest of his father, setup a meeting with DJT to discuss hacked emails. This lead to the infamous Trump Tower meeting that involved DJT, Kushner, and Manafort and other Russians in Group 1. DJT discussed this meeting with others in the campaign as well including Gates. Kushner showed up late to the meeting and texted manafort during that this was a ‘waste of time’ and texted others to call him to get out and he subsequently left early. The meeting did not provide any information to Trump campaign.
 
 #The Oppurtunists 
-```{r oppurtunists, fig.width = 6,fig.height = 6, echo=FALSE, results='asis',fig.align='center'}
+```{r oppurtunists, fig.width = 7,fig.height = 7, echo=FALSE, results='asis',}
 plot(ts_plots_by_cat[['The Opportunists']]+theme(axis.text=element_text(size=12),
-        axis.title=element_text(size=14,face="bold"), plot.title = element_text(size=22)))
+        axis.title=element_text(size=14,face="bold"), plot.title = element_text(size=18)))
 ```
 
 * *Group 4*
@@ -122,9 +125,9 @@ Page also joined the campaign in march 2016 as a foreign policy advisor. He had 
 After Election Page went to Russia in an unofficial role after the election in late 2016. He again met with Russians in Group 5. 
 
 #The Professionals 
-```{r profs, fig.width = 6,fig.height = 6, echo=FALSE, results='asis',fig.align='center' }
+```{r profs, fig.width = 7,fig.height = 7, echo=FALSE, results='asis'}
 plot(ts_plots_by_cat[['The Professionals']]+theme(axis.text=element_text(size=12),
-        axis.title=element_text(size=14,face="bold"), plot.title = element_text(size=22)))
+        axis.title=element_text(size=14,face="bold"), plot.title = element_text(size=18)))
 ```
 
 * *Group 6*
@@ -142,9 +145,9 @@ From March 2016 until his depart Manafort gave and ordered Gates to give campaig
 
 
 #Russian Officials and Lackeys 
-```{r officials, fig.width = 6,fig.height = 6, echo=FALSE, results='asis',fig.align='center' }
-plot(ts_plots_by_cat[['Russian Officials and Lackies']]+theme(axis.text=element_text(size=12),
-        axis.title=element_text(size=14,face="bold"), plot.title = element_text(size=22)))
+```{r officials, fig.width = 7,fig.height = 7, echo=FALSE, results='asis' }
+plot(ts_plots_by_cat[['Russian Officials and Lackeys']]+theme(axis.text=element_text(size=12),
+        axis.title=element_text(size=14,face="bold"), plot.title = element_text(size=18)))
 ```
 
 * *Group 8*
@@ -188,9 +191,9 @@ I think doing text analysis before reading report was very helpful to understand
 
 
 #All Together Graph 
-```{r ts_plot, fig.width = 8,fig.height = 10, echo=FALSE, results='asis',fig.align='center'}
+```{r ts_plot, fig.width = 7,fig.height = 10, echo=FALSE, results='asis'}
 plot(ts_relations_plot+theme(axis.text=element_text(size=12),
-        axis.title=element_text(size=14,face="bold"), plot.title = element_text(size=22)))
+        axis.title=element_text(size=14,face="bold"), plot.title = element_text(size=18)))
 
 ```
 

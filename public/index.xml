@@ -6,19 +6,19 @@
     <description>Recent content on Sweiss&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 16 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Mueller Report Volume 1: A Network Analysis</title>
-      <link>/2019/07/16/mueller-report-volume-1/</link>
-      <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate>
+      <link>/2019/07/15/mueller-report-volume-1/</link>
+      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/07/16/mueller-report-volume-1/</guid>
+      <guid>/2019/07/15/mueller-report-volume-1/</guid>
       <description>settle down and have another cup of coffee
- TLDR asdf There are a lot of Russian’s talking to a lot of Trump campaign members in Mueller report. There are so many it’s tough to get your head around it all. In this post I attempted some network analysis on the relations between campaign officials and Russians. I found that one can ‘compress’ Russian involvement into 9 (mostly) distinct groups. I then summarize these points of contacts.</description>
+ TLDR There are a lot of Russian’s talking to a lot of Trump campaign members in Mueller report. There are so many it’s tough to get your head around it all. In this post I attempted some network analysis on the relations between campaign officials and Russians. I found that one can ‘compress’ Russian involvement into 9 (mostly) distinct groups. I then summarize these points of contacts.</description>
     </item>
     
     <item>
@@ -68,7 +68,7 @@ Audi was the most accurate prediction.</description>
       <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
       
       <guid>/about/</guid>
-      <description>This is a &amp;ldquo;hello world&amp;rdquo; example website for the blogdown package. The theme was forked from @jrutheiser/hugo-lithium-theme and modified by Yihui Xie.</description>
+      <description>pushing to master since 2012</description>
     </item>
     
   </channel>
