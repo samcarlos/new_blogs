@@ -19,6 +19,11 @@
 
 
 
+
+<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
 <link rel="stylesheet" href="/css/fonts.css" media="all">
 <link rel="stylesheet" href="/css/main.css" media="all">
 
@@ -87,7 +92,8 @@
 <h2>Calculations / Results:</h2>
 <p>I obtained bitcoin transaction data with a package called <a href="https://github.com/citp/BlockSci">BlockSci</a>. I calculated the average purchase price of a particular user’s bitcoin holding calculate the realized / unrealized gains accordingly.</p>
 <p>Below is a time series chart of market capitalization, realized gains, and unrealized gains up to December 31 2012.</p>
-<p><img src="/post/2018-04-03-asdf_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.5.2</code></pre>
+<p><img src="/post/2018-04-03-Realized-Gains-Bitcoin_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <p>It’s interesting to note how realized gains does not increase or decrease significantly during the ‘bubble’ of mid 2012.</p>
 <p>By the end of 2012 people have made ~ $79 million dollars of realized gains on bitcoin. This compares with market capitalization of ~ $142 million.</p>
 <p><a href="https://scweiss.blogspot.com/2018/04/how-much-has-bitcoin-made-society.html">comments</a></p>
@@ -745,15 +751,37 @@
     </div>
     
 
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
     
 <script src="/js/math-code.js"></script>
 <script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 
     
-  </body>
-</html>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-143180066-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
 
- </body>
+  </body>
 </html>
 

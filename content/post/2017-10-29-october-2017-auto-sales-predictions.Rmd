@@ -3,10 +3,6 @@ title: October 2017 Auto Sales Predictions
 author: Sam Weiss
 date: '2017-10-29'
 slug: october-2017-auto-sales-predictions
-categories:
-  - Auto
-tags:
-  - R
 ---
 
 Below are predictions for 10-2017 autosales for each auto brand. I modeled monthley car sales by nameplate (eg Camry, Civic, etc), predicted one step ahead forecast and summed by manufacture. The model is a state-space model with trend and seasonality of 12.

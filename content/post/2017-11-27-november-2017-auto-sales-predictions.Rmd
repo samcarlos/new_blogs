@@ -3,10 +3,6 @@ title: November 2017 Auto Sales Predictions
 author: Sam Weiss
 date: '2017-11-27'
 slug: october-2017-auto-sales-predictions
-categories:
-  - Auto
-tags:
-  - R
 ---
 
 ```{r setup, include=FALSE}
@@ -14,9 +10,9 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Previous Results
-Overall car sales for the month 5.7% lower than expected (predicted: 1436262, actual: 1356218). Porsche (new Cayenne and Panamera), Buick (Enclave and LaCrosse showed large gains), and Maserati (Levante) all showed strong growth. 
+Overall car sales for the month 5.7% lower than expected (predicted: 1436262, actual: 1356218). Porsche (new Cayenne and Panamera), Buick (Enclave and LaCrosse showed large gains), and Maserati (Levante) all showed strong growth.
 
-Volvo saw weak numbers compared to the previously high growth they experienced. Both the XC60 and XC90 were expected to increase to 2200 and 3400 cars but fell to 1888 and 2550. 
+Volvo saw weak numbers compared to the previously high growth they experienced. Both the XC60 and XC90 were expected to increase to 2200 and 3400 cars but fell to 1888 and 2550.
 
 Audi was the most accurate prediction.
 
