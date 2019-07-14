@@ -6,30 +6,49 @@
     <description>Recent content on Sweiss&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 07 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Mueller Report Volume 1</title>
-      <link>/2019/07/07/mueller-report-volume-1/</link>
-      <pubDate>Sun, 07 Jul 2019 00:00:00 +0000</pubDate>
+      <title>Mueller Report Volume 1: A Network Analysis</title>
+      <link>/2019/07/15/mueller-report-volume-1/</link>
+      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/07/07/mueller-report-volume-1/</guid>
-      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-When you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-library(ggplot2) ## Warning: package &amp;#39;ggplot2&amp;#39; was built under R version 3.</description>
+      <guid>/2019/07/15/mueller-report-volume-1/</guid>
+      <description>settle down and have another cup of coffee
+ TLDR There are a lot of Russian’s talking to a lot of Trump campaign members in Mueller report. There are so many it’s tough to get your head around it all. In this post I attempted some network analysis on the relations between campaign officials and Russians. I found that one can ‘compress’ Russian involvement into 9 (mostly) distinct groups. I then summarize these points of contacts.</description>
     </item>
     
     <item>
-      <title>Mueller Report Volume 1</title>
-      <link>/2019/07/07/mueller-report-volume-1/</link>
-      <pubDate>Sun, 07 Jul 2019 00:00:00 +0000</pubDate>
+      <title>Mueller Report Volume 1: A Network Analysis</title>
+      <link>/2019/07/15/mueller-report-volume-1/</link>
+      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/07/07/mueller-report-volume-1/</guid>
-      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-When you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</description>
+      <guid>/2019/07/15/mueller-report-volume-1/</guid>
+      <description>TLDR There are a lot of Russian’s talking to a lot of Trump campaign members in Mueller report. There are so many it’s tough to get your head around it all. In this post I attempted some network analysis on the relations between campaign officials and Russians. I found that one can ‘compress’ Russian involvement into 9 (mostly) distinct groups. I then summarize these points of contacts.
+Introduction to Mueller Report The first was a campaign by the IRA that used social media tools like facebook and twitter with the goal of changing public opinion.</description>
+    </item>
+    
+    <item>
+      <title>Mueller Report Volume 1: A Network Analysis</title>
+      <link>/2019/07/15/mueller-report-volume-1/</link>
+      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/07/15/mueller-report-volume-1/</guid>
+      <description>settle down and have another cup of coffee
+ TLDR There are a lot of Russian’s talking to a lot of Trump campaign members in Mueller report. There are so many it’s tough to get your head around it all. In this post I attempted some network analysis on the relations between campaign officials and Russians. I found that one can ‘compress’ Russian involvement into 9 (mostly) distinct groups. I then summarize these points of contacts.</description>
+    </item>
+    
+    <item>
+      <title>Mueller Report Volume 1: A Network Analysis</title>
+      <link>/2019/07/15/mueller-report-volume-1/</link>
+      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/07/15/mueller-report-volume-1/</guid>
+      <description>settle down and have another cup of coffee
+ TLDR There are a lot of Russian’s talking to a lot of Trump campaign members in Mueller report. There are so many it’s tough to get your head around it all. In this post I attempted some network analysis on the relations between campaign officials and Russians. I found that one can ‘compress’ Russian involvement into 9 (mostly) distinct groups. I then summarize these points of contacts.</description>
     </item>
     
     <item>
