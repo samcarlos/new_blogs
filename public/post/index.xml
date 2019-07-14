@@ -6,24 +6,24 @@
     <description>Recent content in Posts on Sweiss&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 15 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 16 Jul 2019 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Mueller Report Volume 1: A Network Analysis</title>
-      <link>/2019/07/15/mueller-report-volume-1/</link>
-      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
+      <link>/2019/07/16/mueller-report-volume-1/</link>
+      <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/07/15/mueller-report-volume-1/</guid>
+      <guid>/2019/07/16/mueller-report-volume-1/</guid>
       <description>&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/Users/sweiss/Downloads/35aykq.jpg&#34; alt=&#34;settle down and have another cup of coffee&#34; /&gt;
+&lt;img src=&#34;/Users/sweiss/src/new_blogs/static/post/iws.jpg&#34; alt=&#34;settle down and have another cup of coffee&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;settle down and have another cup of coffee&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;tldr&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;TLDR&lt;/h2&gt;
-&lt;p&gt;There are a lot of Russian’s talking to a lot of Trump campaign members in Mueller report. There are so many it’s tough to get your head around it all. In this post I attempted some network analysis on the relations between campaign officials and Russians. I found that one can ‘compress’ Russian involvement into 9 (mostly) distinct groups. I then summarize these points of contacts.&lt;/p&gt;
+&lt;p&gt;asdf There are a lot of Russian’s talking to a lot of Trump campaign members in Mueller report. There are so many it’s tough to get your head around it all. In this post I attempted some network analysis on the relations between campaign officials and Russians. I found that one can ‘compress’ Russian involvement into 9 (mostly) distinct groups. I then summarize these points of contacts.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;introduction-to-mueller-report&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Introduction to Mueller Report&lt;/h2&gt;
@@ -36,22 +36,22 @@
 &lt;p&gt;Volume 1 consists of 199 pages including foot-notes and appendices. I found a machine readable version &lt;a href=&#34;https://www.kaggle.com/paultimothymooney/mueller-report&#34;&gt;here&lt;/a&gt;. I split the text into sentences and looked at whether a person’s name was included in that sentence. This left me with a sentence by name matrix that is the starting point of my analysis. There are some drawbacks to this in that OCR does not immediately distinguish sentences. In addition it often groups footnotes with last line of sentences in a page. But it seemed like a good starting point so went ahead.&lt;/p&gt;
 &lt;p&gt;Below are the top 20 most common occurring names.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;ggplot2&amp;#39; was built under R version 3.5.2&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-07-14-mueller-report-volume-1_files/figure-html/freqplot-1.png&#34; width=&#34;960&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-07-13-mueller-report-volume-1_files/figure-html/freqplot-1.png&#34; width=&#34;576&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Papadopulos, Manafort, Kushner, Cohen, Trump JR, and Flynn are all in the top. Considering they were all, to varying degrees, worked in the Trump campaign this makes sense. We also see some Russian names such as Dmitriev, Kilimnik, and Kislyak. I’ll explain they’re contacts below.&lt;/p&gt;
 &lt;p&gt;I then created an person x person matrix that counted the number of times a name co-occurs with another. I’m treating this as a weighted, undirected graph. I transformed this to a laplacian matrix and performed an eigen decomposition. This is known as a spectral analysis of a network. Below is the resulting image of 2nd to last and 3rd to last eigenvectors.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-07-14-mueller-report-volume-1_files/figure-html/allnetwork-1.png&#34; width=&#34;960&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-07-13-mueller-report-volume-1_files/figure-html/allnetwork-1.png&#34; width=&#34;576&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;WHOA … I’m getting a headache looking at this.&lt;/p&gt;
 &lt;p&gt;But it definitely looks like there is structure in the graph. There appears to be some clusters forming and these do correspond to particular events described in the report. In the lower left you can see Papadopoulos related characters, in the upper right some cohen acquaintances, and around 0,.1 there’s the trump tower meeting. Not bad but still messy. I’m looking for distinct clusters.&lt;/p&gt;
 &lt;p&gt;What if we look at only the russians in the graph?&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-07-14-mueller-report-volume-1_files/figure-html/russian_network-1.png&#34; width=&#34;960&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-07-13-mueller-report-volume-1_files/figure-html/russian_network-1.png&#34; width=&#34;576&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Ok! Now we’re talking. There are 6 distinct clusters of Russians here. That means there are no relations between these clusters and each correspond to a unique set of relations with trump campaign officials. I played around with this some more but the text data was too messy to have robust analysis. Co-occurring names do not pick up everything and due to sentence parsing errors somethings lead to erroneous relations.&lt;/p&gt;
 &lt;p&gt;Finally, I gave up on trying to only use text analysis, read volume one, and manually created a network found here. With that I created groupings using the above chart as a starting point. I found 9 fairly distinct clusters of Russians. Below you can see the relationships between those groups and various members of the Trump campaign.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-07-14-mueller-report-volume-1_files/figure-html/slope_plot-1.png&#34; width=&#34;960&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-07-13-mueller-report-volume-1_files/figure-html/slope_plot-1.png&#34; width=&#34;576&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;I then further grouped them into 4 broad categories which I’ve named; Trump Business, The Opportunists, The Professionals, and Russian Officials and Lackeys. I also included whether a trump campaign officials interaction was of first degree (they were in meeting or talked explicitly with Russian Group in question) or second degree (they were aware of meeting). Below are my summaries for each.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;trump-business&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Trump Business&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-07-14-mueller-report-volume-1_files/figure-html/business-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-07-13-mueller-report-volume-1_files/figure-html/business-1.png&#34; width=&#34;576&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;em&gt;Group 1&lt;/em&gt;
 &lt;ul&gt;
@@ -78,7 +78,7 @@
 &lt;/div&gt;
 &lt;div id=&#34;the-oppurtunists&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;The Oppurtunists&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-07-14-mueller-report-volume-1_files/figure-html/oppurtunists-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-07-13-mueller-report-volume-1_files/figure-html/oppurtunists-1.png&#34; width=&#34;576&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;em&gt;Group 4&lt;/em&gt;
 &lt;ul&gt;
@@ -96,7 +96,7 @@
 &lt;/div&gt;
 &lt;div id=&#34;the-professionals&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;The Professionals&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-07-14-mueller-report-volume-1_files/figure-html/profs-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-07-13-mueller-report-volume-1_files/figure-html/profs-1.png&#34; width=&#34;576&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;em&gt;Group 6&lt;/em&gt;
 &lt;ul&gt;
@@ -114,7 +114,7 @@
 &lt;/div&gt;
 &lt;div id=&#34;russian-officials-and-lackeys&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Russian Officials and Lackeys&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-07-14-mueller-report-volume-1_files/figure-html/officials-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-07-13-mueller-report-volume-1_files/figure-html/officials-1.png&#34; width=&#34;576&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;em&gt;Group 8&lt;/em&gt;
 &lt;ul&gt;
@@ -146,7 +146,7 @@
 &lt;/div&gt;
 &lt;div id=&#34;conclusions-on-volume-1&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Conclusions on Volume 1&lt;/h1&gt;
-&lt;p&gt;Overall, I get the impression that the Trump campaign did not attract top talent. Cohen tried to make a deal but couldn’t find the right people to talk to. Papadopolous and DJT tried to get dirt on Clinton but couldn’t find anything. Page seemed to use the campaign as a platform to create more connections with Russians. A few ‘friends’ (Stone and Prince) lent a hand but probably hurt Trump’s credibility by dealing with Russians more than they helped him. Manafort, a seasoned campaigner, wasn’t obviously working for Trump… he worked for free afterall. It seemed like a group that were willing to do shady things, for their own personal gain, but without the ability to follow through.&lt;/p&gt;
+&lt;p&gt;Overall, I get the impression that the Trump campaign did not have the ‘best people’. Cohen tried to make a deal but couldn’t find the right people to talk to. Papadopolous and DJT tried to get dirt on Clinton but couldn’t find anything. Page seemed to use the campaign as a platform to create more connections with Russians. A few ‘friends’ (Stone and Prince) lent a hand but probably hurt Trump’s credibility by dealing with Russians more than they helped him. Manafort, a seasoned campaigner, wasn’t obviously working for Trump… he worked for free afterall. It seemed like a group that were willing to do shady things, for their own personal gain, but without the ability to follow through.&lt;/p&gt;
 &lt;p&gt;SAD!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;conclusions-on-analysis&#34; class=&#34;section level1&#34;&gt;
@@ -155,7 +155,7 @@
 &lt;/div&gt;
 &lt;div id=&#34;all-together-graph&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;All Together Graph&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2019-07-14-mueller-report-volume-1_files/figure-html/ts_plot-1.png&#34; width=&#34;960&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-07-13-mueller-report-volume-1_files/figure-html/ts_plot-1.png&#34; width=&#34;768&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;em&gt;Group 1&lt;/em&gt;
 &lt;ul&gt;

@@ -6,20 +6,19 @@
     <description>Recent content in R on Sweiss&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 03 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 16 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>How Much Have People Made on Bitcoin?</title>
-      <link>/2018/04/03/how-much-have-people-made-on-bitcoin/</link>
-      <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
+      <title>Mueller Report Volume 1: A Network Analysis asdf</title>
+      <link>/2019/07/16/mueller-report-volume-1/</link>
+      <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2018/04/03/how-much-have-people-made-on-bitcoin/</guid>
-      <description>Intro: How much has bitcoin made Society? This post will calculate the realized gains of bitcoin (up to year 2013) as a measure of how much society has made off of bitcoin.
- How are realized gains different from market capitalization? Realized gains measure the amount of money people can claim to have made off of bitcoin. This can be markedly different from the market capitalization.
-For instance suppose we have two stocks A and B both with 100 shares and both with a price of $1 at time t_0.</description>
+      <guid>/2019/07/16/mueller-report-volume-1/</guid>
+      <description>settle down and have another cup of coffee
+ TLDR asdf There are a lot of Russian’s talking to a lot of Trump campaign members in Mueller report. There are so many it’s tough to get your head around it all. In this post I attempted some network analysis on the relations between campaign officials and Russians. I found that one can ‘compress’ Russian involvement into 9 (mostly) distinct groups. I then summarize these points of contacts.</description>
     </item>
     
   </channel>
