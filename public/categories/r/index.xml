@@ -6,17 +6,17 @@
     <description>Recent content in R on Sweiss&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 15 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 16 Jul 2019 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Mueller Report Volume 1: A Network Analysis</title>
-      <link>/2019/07/15/mueller-report-volume-1/</link>
-      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
+      <link>/2019/07/16/mueller-report-volume-1/</link>
+      <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/07/15/mueller-report-volume-1/</guid>
+      <guid>/2019/07/16/mueller-report-volume-1/</guid>
       <description>&lt;div class=&#34;figure&#34;&gt;
 &lt;img src=&#34;/post/2019-07-13-mueller-report-volume-1_files/35aykq.jpg&#34; alt=&#34;settle down and have another cup of coffee&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;settle down and have another cup of coffee&lt;/p&gt;
@@ -27,6 +27,7 @@
 &lt;/div&gt;
 &lt;div id=&#34;introduction-to-mueller-report&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Introduction to Mueller Report&lt;/h2&gt;
+&lt;p&gt;Volume 1 of Mueller Report starts with Russian interference in 2016 US Presidential Elections. Russia did so in two Ways.&lt;/p&gt;
 &lt;p&gt;The first was a campaign by the IRA that used social media tools like facebook and twitter with the goal of changing public opinion. While there were some retweets by Trump and his campaign officials from these accounts there wasn’t much direct communication.&lt;/p&gt;
 &lt;p&gt;The second form was to use Russian intelligence to hack hillary clinton emails. These hacked emails were released with help of wikileaks and guccifer 2.0. Trump’s campaign deliberately tried to find other hacked emails and encourages Russia to do so public. However, the campaign could not find additional information on these emails.&lt;/p&gt;
 &lt;p&gt;The rest of Volume 1 discusses the numerous relationship between trump campaign officials and Russians. It’s this part that will be the basis for most of the results below.&lt;/p&gt;
@@ -196,6 +197,7 @@
 &lt;li&gt;aven, dmitriev&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/samcarlos/mueller_report&#34;&gt;code&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 </description>
       

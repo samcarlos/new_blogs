@@ -1,7 +1,7 @@
 ---
 title: 'Mueller Report Volume 1: A Network Analysis'
 author: 'sweiss'
-date: '2019-07-15'
+date: '2019-07-16'
 slug: 'mueller-report-volume-1'
 categories: ['r']
 tags: ['r']
@@ -22,6 +22,8 @@ knitr::opts_chunk$set(echo = FALSE,root.dir = "/Users/sweiss/src/new_blogs/conte
 There are a lot of Russian’s talking to a lot of Trump campaign members in Mueller report. There are so many it’s tough to get your head around it all. In this post I attempted some network analysis on the relations between campaign officials and Russians. I found that one can ‘compress’ Russian involvement into 9 (mostly) distinct groups. I then summarize these points of contacts. 
 
 ## Introduction to Mueller Report
+
+Volume 1 of Mueller Report starts with Russian interference in 2016 US Presidential Elections. Russia did so in two Ways. 
 
 The first was a campaign by the IRA that used social media tools like facebook and twitter with the goal of changing public opinion. While there were some retweets by Trump and his campaign officials from these accounts there wasn’t much direct communication. 
 
@@ -217,3 +219,5 @@ plot(ts_relations_plot+theme(axis.text=element_text(size=12),
     + kislyak, gorkov
 * *Group 9*
     + aven, dmitriev
+
+[code](https://github.com/samcarlos/mueller_report)
