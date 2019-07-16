@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on Sweiss&#39; Blog</title>
+    <link>/categories/r/</link>
+    <description>Recent content in R on Sweiss&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Jul 2019 00:00:00 +0000</lastBuildDate>
+
+        <atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
+
+
+    <item>
+      <title>Mueller Report Volume 1: A Network Analysis </title>
+      <link>/2019/07/15/mueller-report-volume-1/</link>
+      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
+
+      <guid>/2019/07/15/mueller-report-volume-1/</guid>
+      <description>&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/post/2019-07-13-mueller-report-volume-1_files/35aykq.jpg&#34; alt=&#34;settle down and have another cup of coffee&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;settle down and have another cup of coffee&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tldr&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;TLDR&lt;/h2&gt;
+&lt;p&gt;There are a lot of Russian’s talking to a lot of Trump campaign members in Mueller report. There are so many it’s tough to get your head around it all. In this post I attempted some network analysis on the relations between campaign officials and Russians. I found that one can ‘compress’ Russian involvement into 9 (mostly) distinct groups. I then summarize these points of contacts.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;introduction-to-mueller-report&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Introduction to Mueller Report&lt;/h2&gt;
+&lt;p&gt;Volume 1 of Mueller Report starts with Russian interference in 2016 US Presidential Elections. Russia did so in two Ways.&lt;/p&gt;
+&lt;p&gt;The first was a campaign by the IRA that used social media tools like facebook and twitter with the goal of changing public opinion. While there were some retweets by Trump and his campaign officials from these accounts there wasn’t much direct communication.&lt;/p&gt;
+&lt;p&gt;The second form was to use Russian intelligence to hack hillary clinton emails. These hacked emails were released with help of wikileaks and guccifer 2.0. Trump’s campaign deliberately tried to find other hacked emails and encourages Russia to do so public. However, the campaign could not find additional information on these emails.&lt;/p&gt;
+&lt;p&gt;The rest of Volume 1 discusses the numerous relationship between trump campaign officials and Russians. It’s this part that will be the basis for most of the results below.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;The data&lt;/h2&gt;
+&lt;p&gt;Volume 1 consists of 199 pages including foot-notes and appendices. I found a machine readable version &lt;a href=&#34;https://www.kaggle.com/paultimothymooney/mueller-report&#34;&gt;here&lt;/a&gt;. I split the text into sentences and looked at whether a person’s name was included in that sentence. This left me with a sentence by name matrix that is the starting point of my analysis. There are some drawbacks to this in that OCR does not immediately distinguish sentences. In addition it often groups footnotes with last line of sentences in a page. But it seemed like a good starting point so went ahead.&lt;/p&gt;
+&lt;p&gt;Below are the top 20 most common occurring names. &lt;img src=&#34;/post/2019-07-15-mueller-report-volume-1_files/figure-html/freqplot-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Papadopulos, Manafort, Kushner, Cohen, Trump JR, and Flynn are all in the top. Considering they were all, to varying degrees, worked in the Trump campaign this makes sense. We also see some Russian names such as Dmitriev, Kilimnik, and Kislyak. I’ll explain they’re contacts below.&lt;/p&gt;
+&lt;p&gt;I then created an person x person matrix that counted the number of times a name co-occurs with another. I’m treating this as a weighted, undirected graph. I transformed this to a laplacian matrix and performed an eigen decomposition. This is known as a spectral analysis of a network. Below is the resulting image of 2nd to last and 3rd to last eigenvectors.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-07-15-mueller-report-volume-1_files/figure-html/allnetwork-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;WHOA … I’m getting a headache looking at this.&lt;/p&gt;
+&lt;p&gt;But it definitely looks like there is structure in the graph. There appears to be some clusters forming and these do correspond to particular events described in the report. In the lower left you can see Papadopoulos related characters, in the upper right some cohen acquaintances, and around 0,.1 there’s the trump tower meeting. Not bad but still messy. I’m looking for distinct clusters.&lt;/p&gt;
+&lt;p&gt;What if we look at only the russians in the graph?&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-07-15-mueller-report-volume-1_files/figure-html/russian_network-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Ok! Now we’re talking. There are 6 distinct clusters of Russians here. That means there are no relations between these clusters and each correspond to a unique set of relations with trump campaign officials. I played around with this some more but the text data was too messy to have robust analysis. Co-occurring names do not pick up everything and due to sentence parsing errors somethings lead to erroneous relations.&lt;/p&gt;
+&lt;p&gt;Finally, I gave up on trying to only use text analysis, read volume one, and manually created a network found here. With that I created groupings using the above chart as a starting point. I found 9 fairly distinct clusters of Russians. Below you can see the relationships between those groups and various members of the Trump campaign.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-07-15-mueller-report-volume-1_files/figure-html/slope_plot-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;I then further grouped them into 4 broad categories which I’ve named; Trump Business, The Opportunists, The Professionals, and Russian Officials and Lackeys. I also included whether a trump campaign officials interaction was of first degree (they were in meeting or talked explicitly with Russian Group in question) or second degree (they were aware of meeting). Below are my summaries for each.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;trump-business&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Trump Business&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-07-15-mueller-report-volume-1_files/figure-html/business-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Group 1&lt;/em&gt;
+&lt;ul&gt;
+&lt;li&gt;agalarov, aras, goldstone, samochornov, veselnitskaya, kaveladze, akhmetshin&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Group 2&lt;/em&gt;
+&lt;ul&gt;
+&lt;li&gt;klokov, erchova&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Group 3&lt;/em&gt;
+&lt;ul&gt;
+&lt;li&gt;rtskhiladze, rozov&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Group 5&lt;/em&gt;
+&lt;ul&gt;
+&lt;li&gt;peskov&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Aras Agalorov (he has a son Emin. I did not disambiguate the difference between them) is a billionaire Russian Property Developer that worked with trump to create Miss Universe Pageant in 2013. They Discussed creating a Trump tower in moscow in late 2013 and discussed with Donald Trump JR (DTJ) and Ivanka Trump but did not progress.&lt;/p&gt;
+&lt;p&gt;In Summer of 2015 Group 3 signed a letter of intent to build the trump tower in moscow and met with Ivanka and DTJ.&lt;/p&gt;
+&lt;p&gt;While this was happening Group 2 contacted cohen to discuss Trump tower in moscow and a meeting with Trump. Cohen thought this person was a pro-wrestler but that did not seem to bother and agreed to talk about business. They wanted to set up a meeting with Trump and Putin but Cohen wanted to keep clear of politics and it went nowhere.&lt;/p&gt;
+&lt;p&gt;Finally, due to the slowness of progress in Trump Tower Moscow deal from Group 2 cohen reached out to Peskov, Press Secretary for Putin, to try and get in touch with Putin directly and begin building. Cohen worked on moscow deal through summer of 2016 but it went nowhere.&lt;/p&gt;
+&lt;p&gt;During campaign the Emin Agalorov, at the behest of his father, setup a meeting with DJT to discuss hacked emails. This lead to the infamous Trump Tower meeting that involved DJT, Kushner, and Manafort and other Russians in Group 1. DJT discussed this meeting with others in the campaign as well including Gates. Kushner showed up late to the meeting and texted manafort during that this was a ‘waste of time’ and texted others to call him to get out and he subsequently left early. The meeting did not provide any information to Trump campaign.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-oppurtunists&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;The Oppurtunists&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-07-15-mueller-report-volume-1_files/figure-html/oppurtunists-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Group 4&lt;/em&gt;
+&lt;ul&gt;
+&lt;li&gt;mifsud, polonskaya, timofeev, millian&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Group 5&lt;/em&gt;
+&lt;ul&gt;
+&lt;li&gt;klimentov, poliakova, peskov, dvorkovich&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Papadoplous and Page had similar experiences with the Trump campaign and they both seemed to be in it for the opportunity it presented themselves. Both padded his resume to look more important than he was to get the job and both foreign policy advisory roles.&lt;/p&gt;
+&lt;p&gt;Papadoplous got the job of foreign policy advisor in march 2016. He met Mifsud, a Maltese Professor, in Rome at a meeting for London Centre of International Law Practice shortly after. Upon learning that Papadoplous was employed by campaign Mifsud took interest and spoke of his Russian connections. Papadopolous, thinking that having more russian connections could help his stature in the Trump Campaign, pursued this relationship. They met the following week in London where Mifsud introduced him to Polonskaya. Papadopolous relayed his new contacts with Clovis and received an approving response. This relationship continued and Mifsud said Russia had ‘dirt’ on Clinton during a meeting in late April. Ten days later he told a foreign official about his contacts and knowledge of dirt on Clinton. He then discussed a Trump meeting with Putin to Lewandowski, Miller, and Manafort. Manafort made clear that Trump should not meet with Putin directly.&lt;/p&gt;
+&lt;p&gt;Page also joined the campaign in march 2016 as a foreign policy advisor. He had previously lived and worked in Russia and had several Russian contacts. He was invited to talk to the New Economic School in Russia in July and asked for permission. Clovis responded that if he went he could not speak for Trump Campaign. His talk was critical of US policy towards Russia and was received welcomingly from Russian Deputy Prime Minister and others. After he met Kislyak in July in Cleveland. These activities drew the attention of the media and was removed from campaign in late september.&lt;/p&gt;
+&lt;p&gt;After Election Page went to Russia in an unofficial role after the election in late 2016. He again met with Russians in Group 5.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-professionals&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;The Professionals&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-07-15-mueller-report-volume-1_files/figure-html/profs-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Group 6&lt;/em&gt;
+&lt;ul&gt;
+&lt;li&gt;oknyansky, rasin&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Group 7&lt;/em&gt;
+&lt;ul&gt;
+&lt;li&gt;kilimnik, deripaska, boyarkin, oganov&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Paul Manfort and Roger Stone are political consultants and previously worked together. Roger Stone worked alongside the campaign to help but was never officially apart of the campaign. Manafort joined in March 2016 and was the chairman between June and August.&lt;/p&gt;
+&lt;p&gt;Caputo set up a meeting Stone with Group 6, Oknyansky and Rasin, to get dirt on Clinton in May 2016. Rasin claimed to have information on money laundering activities by Clinton. Stone refused the offer because they asked for too much money.&lt;/p&gt;
+&lt;p&gt;Also, Stone had some contact with the twitter account Guccifer 2.0 (not shown above). This was the front used by the GRU to release stolen documents. Curiously, his name was redacted on page 45 in the Mueller report because of ‘Harm to ongoing matter’. Seems a little weird to redact something when it’s &lt;a href=&#34;https://www.justsecurity.org/45435/timeline-roger-stone-russias-guccifer-2-0-wikileaks/&#34;&gt;public information&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;From March 2016 until his depart Manafort gave and ordered Gates to give campaign updates to Kilimnik. Kilimnik is thought to be a Russian spy and has connections with Deripaska, a Russian billionaire who Manafort owed money to. Manafort gave polling data on the Trump campaign and met with Kilimnik twice in person; once in May and then again in August. It’s not clear why Manafort gave this data to Kilimnik although Gates thought it was to ingratiate himself to Deripaska. Deripaska and his deputy Boyarkin were subsequently sanctioned by the US Treasury.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;russian-officials-and-lackeys&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Russian Officials and Lackeys&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-07-15-mueller-report-volume-1_files/figure-html/officials-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Group 8&lt;/em&gt;
+&lt;ul&gt;
+&lt;li&gt;kislyak, gorkov&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Group 9&lt;/em&gt;
+&lt;ul&gt;
+&lt;li&gt;aven, dmitriev&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The final groups deal with Russian Officials and and Putin’s Billionaires.&lt;/p&gt;
+&lt;p&gt;Sessions and Kushner met with Kislyak, the Russian Ambassador to the US, first in April at a Trump Foreign Policy Conference. These were brief handshake affairs that lasted about a couple of minutes. Sessions does not recall seeing Kislyak.&lt;/p&gt;
+&lt;p&gt;Sessions, Gordon, and Page met with Kislyak at the Republican National Convention in July. He was one of approximately 80 foreign ambassadors to the US that were invited. Gordon and Sessions met with Kislyak for a few minutes after their speeches. Gordon, Page, and Kislyak later sat at the same table and discussed improving US Russian Relations for a few minutes.&lt;/p&gt;
+&lt;p&gt;Gordon received an email in August to meet with Kislyak but declined due to ‘constant stream of false media stories’ and offered to rain check the meeting.&lt;/p&gt;
+&lt;p&gt;In August Russian Embassy set up a meeting with Sessions in Kislyak and the two met in September at Session’s Senate office. Meeting lasted 30 minutes and Kislyak tried to set up another meeting but Session’s didn’t follow up. Sessions got into trouble by not disclosing his meetings with Kislyak and was part of the reason he recused himself from what became known as the Mueller report.&lt;/p&gt;
+&lt;p&gt;Following the election in November Kislyak reached out to Kushner but Kushner did not think Kislyak had a direct line to Putin and was therefore not important enough to talk to. Nevertheless Kushner met with Kislayk in November at Trump tower and invited Flynn and spoke for about 30 minutes about repairing US Russian Relations. Kislyak suggested using a secure line to talk to Russian generals about Syrian war. Kushner said he had no secure lines to use and asked if they could use russian facilities but Kislyak rejected that idea.&lt;/p&gt;
+&lt;p&gt;Kislyak tried to get another meeting with Kushner but Kushner sent his assistant instead. Kislyak proposed meeting with Gorkov, the head of a Russian owned bank, instead. Kushner agreed and they met in December. Kushner said that meeting was about restoring US - Russian Relations. Gorkov said it was about Kushner’s personal business. They did not have any follow up meetings.&lt;/p&gt;
+&lt;p&gt;In december Flynn talked with Kislyak about two separate topics. The first was to convince Russia to Veto anti-Israel resolution on settlements in the UN where it was thought the Obama administration would abstain. Russia did not vote against it. The second was to convince Russia not to retaliate against new sanctions for meddling in US elections. Mcfarland and Bannon were aware of Flynn’s discussions about the sanctions. Russia did not apply retaliatory sanctions.&lt;/p&gt;
+&lt;p&gt;Finally there were two billionaires men that Putin ‘deputized’ to create contacts with the Trump Campaign after the election; Aven and Dmitriev. Aven said recalled that Putin did not know who to contact to get in touch with President Elect Trump. Aven did not make direct contact to campaign but Dmitriev did through two avenues. One was to try and convince Kushner’s friend to setup a meeting. Kushner circulated this opportunity internally but it went nowhere. The other was meeting with Erick Prince, a supporter of Trump but not officially in campaign, in the Seychelles Islands. Prince discussed his meeting with Bannon but Bannon does not have a recollection of it.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;some-notable-connections&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Some notable connections&lt;/h1&gt;
+&lt;p&gt;In general these Russian Groupings were distinct in the people they talked to and had little obvious contact with one another. Some notable exceptions are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Peskov talked to Cohen and Page independently&lt;/li&gt;
+&lt;li&gt;Dmitriev and Peskov might have talked to eachother (p. 149) but there was some ‘investigative technique’ redactions so I’m not sure&lt;/li&gt;
+&lt;li&gt;Kilimnik was aware of Page’s December visit to Russia and discussed with Manafort saying “Carter Page is in Moscow today, sending messages he is authorized to talk to Russia on behalf of DT on a range of issues of mutual interest, including Ukraine” p. 166. Leads me to ask: who would know the whereabouts and discussions of other people? Spies. Thats who.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;conclusions-on-volume-1&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Conclusions on Volume 1&lt;/h1&gt;
+&lt;p&gt;Overall, I get the impression that the Trump campaign did not have the ‘best people’. Cohen tried to make a deal but couldn’t find the right people to talk to. Papadopolous and DJT tried to get dirt on Clinton but couldn’t find anything. Page seemed to use the campaign as a platform to create more connections with Russians. A few ‘friends’ (Stone and Prince) lent a hand but probably hurt Trump’s credibility by dealing with Russians more than they helped him. Manafort, a seasoned campaigner, wasn’t obviously working for Trump… he worked for free afterall. It seemed like a group that were willing to do shady things, for their own personal gain, but without the ability to follow through.&lt;/p&gt;
+&lt;p&gt;SAD!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;conclusions-on-analysis&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Conclusions on Analysis&lt;/h1&gt;
+&lt;p&gt;I think doing text analysis before reading report was very helpful to understanding it. There are just so many connections going on it’s hard to keep track. Running some basic clustering techniques as described above helped me zone into what to look for while reading the report.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;all-together-graph&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;All Together Graph&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-07-15-mueller-report-volume-1_files/figure-html/ts_plot-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Group 1&lt;/em&gt;
+&lt;ul&gt;
+&lt;li&gt;agalarov, aras, goldstone, samochornov, veselnitskaya, kaveladze, akhmetshin&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Group 2&lt;/em&gt;
+&lt;ul&gt;
+&lt;li&gt;klokov, erchova&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Group 3&lt;/em&gt;
+&lt;ul&gt;
+&lt;li&gt;rtskhiladze, rozov&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Group 5&lt;/em&gt;
+&lt;ul&gt;
+&lt;li&gt;peskov&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Group 4&lt;/em&gt;
+&lt;ul&gt;
+&lt;li&gt;mifsud, polonskaya, timofeev, millian&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Group 5&lt;/em&gt;
+&lt;ul&gt;
+&lt;li&gt;klimentov, poliakova, peskov, dvorkovich&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Group 6&lt;/em&gt;
+&lt;ul&gt;
+&lt;li&gt;oknyansky, rasin&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Group 7&lt;/em&gt;
+&lt;ul&gt;
+&lt;li&gt;kilimnik, deripaska, boyarkin, oganov&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Group 8&lt;/em&gt;
+&lt;ul&gt;
+&lt;li&gt;kislyak, gorkov&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Group 9&lt;/em&gt;
+&lt;ul&gt;
+&lt;li&gt;aven, dmitriev&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/samcarlos/mueller_report&#34;&gt;code&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+
+
+            <category>r</category>
+
+    </item>
+
+  </channel>
+</rss>
