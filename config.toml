@@ -2,11 +2,10 @@ baseurl = "/"
 languageCode = "en-us"
 title = "Sweiss' Blog"
 theme = "hugo-lithium-theme"
-googleAnalytics = ""
+googleAnalytics = "UA-143180066-1"
 disqusShortname = ""
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
-GoogleAnalytics = 'UA-143180066-1'
 [permalinks]
     post = "/:year/:month/:day/:slug/"
 
