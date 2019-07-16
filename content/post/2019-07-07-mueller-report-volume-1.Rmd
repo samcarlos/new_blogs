@@ -141,7 +141,7 @@ From March 2016 until his depart Manafort gave and ordered Gates to give campaig
 
 #Russian Officials and Lackeys 
 ```{r officials, fig.width = 8,fig.height = 8, echo=FALSE, results='asis'}
-plot(ts_plots_by_cat[['Russian Officials and Lackies']]+theme(axis.text=element_text(size=12),
+plot(ts_plots_by_cat[['Russian Officials and Lackeys']]+theme(axis.text=element_text(size=12),
         axis.title=element_text(size=14,face="bold"), plot.title = element_text(size=22)))
 ```
 
