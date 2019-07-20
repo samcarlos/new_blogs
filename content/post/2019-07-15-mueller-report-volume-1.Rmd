@@ -15,7 +15,6 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 
-![settle down and have another cup of coffee](/post/2019-07-13-mueller-report-volume-1_files/35aykq.jpg)
 
 
 ## TLDR 

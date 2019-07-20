@@ -12,23 +12,13 @@
     
     
     <item>
-      <title>Mueller Report Volume 1: A Network Analysis</title>
-      <link>/2019/07/15/mueller-report-volume-1/</link>
-      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/2019/07/15/mueller-report-volume-1/</guid>
-      <description>settle down and have another cup of coffee
- TLDR There are a lot of Russian’s talking to a lot of Trump campaign members in Mueller report. There are so many it’s tough to get your head around it all. In this post I attempted some network analysis on the relations between campaign officials and Russians. I found that one can ‘compress’ Russian involvement into 9 (mostly) distinct groups. I then summarize these points of contacts.</description>
-    </item>
-    
-    <item>
       <title>Mueller Report Volume 1: A Network Analysis </title>
       <link>/2019/07/15/mueller-report-volume-1/</link>
       <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>/2019/07/15/mueller-report-volume-1/</guid>
-      <description>settle down and have another cup of coffee
- TLDR There are a lot of Russian’s talking to a lot of Trump campaign members in Mueller report. There are so many it’s tough to get your head around it all. In this post I attempted some network analysis on the relations between campaign officials and Russians. I found that one can ‘compress’ Russian involvement into 9 (mostly) distinct groups. I then summarize these points of contacts.</description>
+      <description>TLDR There are a lot of Russian’s talking to a lot of Trump campaign members in Mueller report. There are so many it’s tough to get your head around it all. In this post I attempted some network analysis on the relations between campaign officials and Russians. I found that one can ‘compress’ Russian involvement into 9 (mostly) distinct groups. I then summarize these points of contacts.
+ Introduction to Mueller Report Volume 1 of Mueller Report starts with Russian interference in 2016 US Presidential Elections.</description>
     </item>
     
     <item>
@@ -79,6 +69,15 @@ Audi was the most accurate prediction.</description>
       
       <guid>/about/</guid>
       <description>pushing to master since 2012</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/1/01/01/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/1/01/01/</guid>
+      <description></description>
     </item>
     
   </channel>
