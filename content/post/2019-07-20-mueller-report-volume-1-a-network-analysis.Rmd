@@ -19,6 +19,7 @@ knitr::opts_chunk$set(echo = FALSE)
 [code](https://github.com/samcarlos/mueller_report)
 
 #TLDR 
+
 There are a lot of Russian’s talking to a lot of Trump campaign members in Mueller report. There are so many it’s tough to get your head around it all. In this post I attempted some network analysis on the relations between campaign officials and Russians. I found that one can ‘compress’ Russian involvement into 9 (mostly) distinct groups. I then summarize these points of contacts. 
 
 #Introduction to Mueller Report
@@ -82,6 +83,7 @@ plot(slope_graph_g+theme(axis.text=element_text(size=12),
 I then further grouped them into 4 broad categories which I’ve named; Trump Business, The Opportunists, The Professionals, and Russian Officials and Lackeys. I also included whether a trump campaign officials interaction was of first degree (they were in meeting or talked explicitly with Russian Group in question) or second degree (they were aware of meeting). Below are my summaries for each. 
 
 #Trump Business
+
 ```{r business, fig.width = 7,fig.height = 7, echo=FALSE, results='asis'}
 plot(ts_plots_by_cat[['Trump Business']]+theme(axis.text=element_text(size=12),
         axis.title=element_text(size=14,face="bold"), plot.title = element_text(size=18)))
@@ -108,6 +110,7 @@ Finally, due to the slowness of progress in Trump Tower Moscow deal from Group 2
 During campaign the Emin Agalorov, at the behest of his father, setup a meeting with DJT to discuss hacked emails. This lead to the infamous Trump Tower meeting that involved DJT, Kushner, and Manafort and other Russians in Group 1. DJT discussed this meeting with others in the campaign as well including Gates. Kushner showed up late to the meeting and texted manafort during that this was a ‘waste of time’ and texted others to call him to get out and he subsequently left early. The meeting did not provide any information to Trump campaign.
 
 #The Oppurtunists 
+
 ```{r oppurtunists, fig.width = 7,fig.height = 7, echo=FALSE, results='asis',}
 plot(ts_plots_by_cat[['The Opportunists']]+theme(axis.text=element_text(size=12),
         axis.title=element_text(size=14,face="bold"), plot.title = element_text(size=18)))
@@ -127,6 +130,7 @@ Page also joined the campaign in march 2016 as a foreign policy advisor. He had 
 After Election Page went to Russia in an unofficial role after the election in late 2016. He again met with Russians in Group 5. 
 
 #The Professionals 
+
 ```{r profs, fig.width = 7,fig.height = 7, echo=FALSE, results='asis'}
 plot(ts_plots_by_cat[['The Professionals']]+theme(axis.text=element_text(size=12),
         axis.title=element_text(size=14,face="bold"), plot.title = element_text(size=18)))
@@ -147,6 +151,7 @@ From March 2016 until his depart Manafort gave and ordered Gates to give campaig
 
 
 #Russian Officials and Lackeys 
+
 ```{r officials, fig.width = 7,fig.height = 7, echo=FALSE, results='asis' }
 plot(ts_plots_by_cat[['Russian Officials and Lackeys']]+theme(axis.text=element_text(size=12),
         axis.title=element_text(size=14,face="bold"), plot.title = element_text(size=18)))
@@ -176,6 +181,7 @@ In december Flynn talked with Kislyak about two separate topics. The first was t
 Finally there were two billionaires men that Putin ‘deputized’ to create contacts with the Trump Campaign after the election; Aven and Dmitriev.  Aven said recalled that Putin did not know who to contact to get in touch with President Elect Trump. Aven did not make direct contact to campaign but Dmitriev did through two avenues. One was to try and convince Kushner’s friend to setup a meeting. Kushner circulated this opportunity internally but it went nowhere. The other was meeting with Erick Prince, a supporter of Trump but not officially in campaign, in the Seychelles Islands. Prince discussed his meeting with Bannon but Bannon does not have a recollection of it.
 
 #Some notable connections
+
 In general these Russian Groupings were distinct in the people they talked to and had little obvious contact with one another. Some notable exceptions are: 
 
 - Peskov talked to Cohen and Page independently
@@ -183,11 +189,13 @@ In general these Russian Groupings were distinct in the people they talked to an
 - Kilimnik was aware of Page’s December visit to Russia and discussed with Manafort saying “Carter Page is in Moscow today, sending messages he is authorized to talk to Russia on behalf of DT on a range of issues of mutual interest, including Ukraine” p. 166. Leads me to ask: who would know the whereabouts and discussions of other people? Spies. Thats who. 
 
 #Conclusions on Volume 1
+
 Overall, I get the impression that the Trump campaign did not have the 'best people'. Cohen tried to make a deal but couldn't find the right people to talk to. Papadopolous and DJT tried to get dirt on Clinton but couldn't find anything. Page seemed to use the campaign as a platform to create more connections with Russians. A few 'friends' (Stone and Prince) lent a hand but probably hurt Trump's credibility by dealing with Russians more than they helped him. Manafort, a seasoned campaigner, wasn't obviously working for Trump... he worked for free afterall. It seemed like a group that were willing to do shady things, for their own personal gain, but without the ability to follow through. 
 
 SAD!
 
 #All Together Graph 
+
 ```{r ts_plot, fig.width = 7,fig.height = 10, echo=FALSE, results='asis'}
 plot(ts_relations_plot+theme(axis.text=element_text(size=12),
         axis.title=element_text(size=14,face="bold"), plot.title = element_text(size=18)))
@@ -195,6 +203,7 @@ plot(ts_relations_plot+theme(axis.text=element_text(size=12),
 ```
 
 #Conclusions on Analysis
+
 I think doing text analysis before reading report was very helpful to understanding it. There are just so many connections going on it's hard to keep track. Running some basic clustering techniques as described above helped me zone into what to look for while reading the report. 
 
 
