@@ -1,7 +1,7 @@
 ---
 title: 'Mueller Report Volume 1: A Network Analysis '
 author: 'Sam Weiss'
-date: '2019-07-15'
+date: '2019-07-21'
 slug: 'mueller-report-volume-1'
 categories: ['r']
 tags: ['r']
@@ -16,7 +16,6 @@ knitr::opts_chunk$set(echo = FALSE)
 
 
 
-![calm down and have another cup of coffee](/post/2019-07-15-mueller-report-volume-1_files/35aykq.jpg)
 [code](https://github.com/samcarlos/mueller_report)
 
 ## TLDR 
@@ -188,11 +187,6 @@ Overall, I get the impression that the Trump campaign did not have the 'best peo
 
 SAD!
 
-#Conclusions on Analysis
-I think doing text analysis before reading report was very helpful to understanding it. There are just so many connections going on it's hard to keep track. Running some basic clustering techniques as described above helped me zone into what to look for while reading the report. 
-
-
-
 #All Together Graph 
 ```{r ts_plot, fig.width = 7,fig.height = 10, echo=FALSE, results='asis'}
 plot(ts_relations_plot+theme(axis.text=element_text(size=12),
@@ -220,3 +214,9 @@ plot(ts_relations_plot+theme(axis.text=element_text(size=12),
     + kislyak, gorkov
 * *Group 9*
     + aven, dmitriev
+
+#Conclusions on Analysis
+I think doing text analysis before reading report was very helpful to understanding it. There are just so many connections going on it's hard to keep track. Running some basic clustering techniques as described above helped me zone into what to look for while reading the report. 
+
+
+
