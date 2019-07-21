@@ -1,5 +1,5 @@
 ---
-title: 'Mueller Report Volume 1: A Network Analysis '
+title: 'Mueller Report Volume 1: Network Analysis '
 author: 'Sam Weiss'
 date: '2019-07-21'
 slug: 'mueller-report-volume-1'
