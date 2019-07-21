@@ -1,6 +1,6 @@
 ---
 title: 'Mueller Report Volume 1: A Network Analysis '
-author: 'sweiss'
+author: 'Sam Weiss'
 date: '2019-07-15'
 slug: 'mueller-report-volume-1'
 categories: ['r']

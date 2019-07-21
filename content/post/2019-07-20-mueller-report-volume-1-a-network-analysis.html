@@ -1,6 +1,6 @@
 ---
 title: 'Mueller Report Volume 1: A Network Analysis '
-author: 'sweiss'
+author: 'Sam Weiss'
 date: '2019-07-15'
 slug: 'mueller-report-volume-1'
 categories: ['r']
@@ -9,6 +9,7 @@ tags: ['r']
 
 
 
+<p><img src="/post/2019-07-15-mueller-report-volume-1_files/35aykq.jpg" alt="calm down and have another cup of coffee" /> <a href="https://github.com/samcarlos/mueller_report">code</a></p>
 <div id="tldr" class="section level2">
 <h2>TLDR</h2>
 <p>There are a lot of Russian’s talking to a lot of Trump campaign members in Mueller report. There are so many it’s tough to get your head around it all. In this post I attempted some network analysis on the relations between campaign officials and Russians. I found that one can ‘compress’ Russian involvement into 9 (mostly) distinct groups. I then summarize these points of contacts.</p>
@@ -23,22 +24,22 @@ tags: ['r']
 <div id="the-data" class="section level2">
 <h2>The data</h2>
 <p>Volume 1 consists of 199 pages including foot-notes and appendices. I found a machine readable version <a href="https://www.kaggle.com/paultimothymooney/mueller-report">here</a>. I split the text into sentences and looked at whether a person’s name was included in that sentence. This left me with a sentence by name matrix that is the starting point of my analysis. There are some drawbacks to this in that OCR does not immediately distinguish sentences. In addition it often groups footnotes with last line of sentences in a page. But it seemed like a good starting point so went ahead.</p>
-<p>Below are the top 20 most common occurring names. <img src="/post/2019-07-15-mueller-report-volume-1_files/figure-html/freqplot-1.png" width="672" /></p>
+<p>Below are the top 20 most common occurring names. <img src="/post/2019-07-20-mueller-report-volume-1-a-network-analysis_files/figure-html/freqplot-1.png" width="672" /></p>
 <p>Papadopulos, Manafort, Kushner, Cohen, Trump JR, and Flynn are all in the top. Considering they were all, to varying degrees, worked in the Trump campaign this makes sense. We also see some Russian names such as Dmitriev, Kilimnik, and Kislyak. I’ll explain they’re contacts below.</p>
 <p>I then created an person x person matrix that counted the number of times a name co-occurs with another. I’m treating this as a weighted, undirected graph. I transformed this to a laplacian matrix and performed an eigen decomposition. This is known as a spectral analysis of a network. Below is the resulting image of 2nd to last and 3rd to last eigenvectors.</p>
-<p><img src="/post/2019-07-15-mueller-report-volume-1_files/figure-html/allnetwork-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="/post/2019-07-20-mueller-report-volume-1-a-network-analysis_files/figure-html/allnetwork-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>WHOA … I’m getting a headache looking at this.</p>
 <p>But it definitely looks like there is structure in the graph. There appears to be some clusters forming and these do correspond to particular events described in the report. In the lower left you can see Papadopoulos related characters, in the upper right some cohen acquaintances, and around 0,.1 there’s the trump tower meeting. Not bad but still messy. I’m looking for distinct clusters.</p>
 <p>What if we look at only the russians in the graph?</p>
-<p><img src="/post/2019-07-15-mueller-report-volume-1_files/figure-html/russian_network-1.png" width="672" /></p>
+<p><img src="/post/2019-07-20-mueller-report-volume-1-a-network-analysis_files/figure-html/russian_network-1.png" width="672" /></p>
 <p>Ok! Now we’re talking. There are 6 distinct clusters of Russians here. That means there are no relations between these clusters and each correspond to a unique set of relations with trump campaign officials. I played around with this some more but the text data was too messy to have robust analysis. Co-occurring names do not pick up everything and due to sentence parsing errors somethings lead to erroneous relations.</p>
 <p>Finally, I gave up on trying to only use text analysis, read volume one, and manually created a network found here. With that I created groupings using the above chart as a starting point. I found 9 fairly distinct clusters of Russians. Below you can see the relationships between those groups and various members of the Trump campaign.</p>
-<p><img src="/post/2019-07-15-mueller-report-volume-1_files/figure-html/slope_plot-1.png" width="672" /></p>
+<p><img src="/post/2019-07-20-mueller-report-volume-1-a-network-analysis_files/figure-html/slope_plot-1.png" width="672" /></p>
 <p>I then further grouped them into 4 broad categories which I’ve named; Trump Business, The Opportunists, The Professionals, and Russian Officials and Lackeys. I also included whether a trump campaign officials interaction was of first degree (they were in meeting or talked explicitly with Russian Group in question) or second degree (they were aware of meeting). Below are my summaries for each.</p>
 </div>
 <div id="trump-business" class="section level1">
 <h1>Trump Business</h1>
-<p><img src="/post/2019-07-15-mueller-report-volume-1_files/figure-html/business-1.png" width="672" /></p>
+<p><img src="/post/2019-07-20-mueller-report-volume-1-a-network-analysis_files/figure-html/business-1.png" width="672" /></p>
 <ul>
 <li><em>Group 1</em>
 <ul>
@@ -65,7 +66,7 @@ tags: ['r']
 </div>
 <div id="the-oppurtunists" class="section level1">
 <h1>The Oppurtunists</h1>
-<p><img src="/post/2019-07-15-mueller-report-volume-1_files/figure-html/oppurtunists-1.png" width="672" /></p>
+<p><img src="/post/2019-07-20-mueller-report-volume-1-a-network-analysis_files/figure-html/oppurtunists-1.png" width="672" /></p>
 <ul>
 <li><em>Group 4</em>
 <ul>
@@ -83,7 +84,7 @@ tags: ['r']
 </div>
 <div id="the-professionals" class="section level1">
 <h1>The Professionals</h1>
-<p><img src="/post/2019-07-15-mueller-report-volume-1_files/figure-html/profs-1.png" width="672" /></p>
+<p><img src="/post/2019-07-20-mueller-report-volume-1-a-network-analysis_files/figure-html/profs-1.png" width="672" /></p>
 <ul>
 <li><em>Group 6</em>
 <ul>
@@ -101,7 +102,7 @@ tags: ['r']
 </div>
 <div id="russian-officials-and-lackeys" class="section level1">
 <h1>Russian Officials and Lackeys</h1>
-<p><img src="/post/2019-07-15-mueller-report-volume-1_files/figure-html/officials-1.png" width="672" /></p>
+<p><img src="/post/2019-07-20-mueller-report-volume-1-a-network-analysis_files/figure-html/officials-1.png" width="672" /></p>
 <ul>
 <li><em>Group 8</em>
 <ul>
@@ -142,7 +143,7 @@ tags: ['r']
 </div>
 <div id="all-together-graph" class="section level1">
 <h1>All Together Graph</h1>
-<p><img src="/post/2019-07-15-mueller-report-volume-1_files/figure-html/ts_plot-1.png" width="672" /></p>
+<p><img src="/post/2019-07-20-mueller-report-volume-1-a-network-analysis_files/figure-html/ts_plot-1.png" width="672" /></p>
 <ul>
 <li><em>Group 1</em>
 <ul>
@@ -185,6 +186,4 @@ tags: ['r']
 <li>aven, dmitriev</li>
 </ul></li>
 </ul>
-<p><a href="https://github.com/samcarlos/mueller_report">code</a></p>
-<p>s</p>
 </div>
