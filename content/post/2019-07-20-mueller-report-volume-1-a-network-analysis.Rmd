@@ -9,7 +9,7 @@ tags: ['r']
 
 
 
-```{r setup, include=FALSE, echo=FALSE, results='asis'}
+```{r setup, include=FALSE, echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 
 ```
