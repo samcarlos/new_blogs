@@ -18,10 +18,10 @@ knitr::opts_chunk$set(echo = FALSE)
 
 [code](https://github.com/samcarlos/mueller_report)
 
-## TLDR 
+#TLDR 
 There are a lot of Russian’s talking to a lot of Trump campaign members in Mueller report. There are so many it’s tough to get your head around it all. In this post I attempted some network analysis on the relations between campaign officials and Russians. I found that one can ‘compress’ Russian involvement into 9 (mostly) distinct groups. I then summarize these points of contacts. 
 
-## Introduction to Mueller Report
+#Introduction to Mueller Report
 
 Volume 1 of Mueller Report starts with Russian interference in 2016 US Presidential Elections. Russia did so in two Ways. 
 
@@ -32,7 +32,7 @@ The second form was to use Russian intelligence to hack hillary clinton emails. 
 The rest of Volume 1 discusses the numerous relationship between trump campaign officials and Russians. It’s this part that will be the basis for most of the results below.
 
 
-## The data
+#The data
 Volume 1 consists of 199 pages including foot-notes and appendices. I found a machine readable version [here](https://www.kaggle.com/paultimothymooney/mueller-report). I split the text into sentences and looked at whether a person’s name was included in that sentence. This left me with a sentence by name matrix that is the starting point of my analysis. 
 There are some drawbacks to this in that OCR does not immediately distinguish sentences. In addition it often groups footnotes with last line of sentences in a page. But it seemed like a good starting point so went ahead. 
 

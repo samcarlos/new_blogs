@@ -10,19 +10,19 @@ tags: ['r']
 
 
 <p><a href="https://github.com/samcarlos/mueller_report">code</a></p>
-<div id="tldr" class="section level2">
-<h2>TLDR</h2>
+<div id="tldr" class="section level1">
+<h1>TLDR</h1>
 <p>There are a lot of Russian’s talking to a lot of Trump campaign members in Mueller report. There are so many it’s tough to get your head around it all. In this post I attempted some network analysis on the relations between campaign officials and Russians. I found that one can ‘compress’ Russian involvement into 9 (mostly) distinct groups. I then summarize these points of contacts.</p>
 </div>
-<div id="introduction-to-mueller-report" class="section level2">
-<h2>Introduction to Mueller Report</h2>
+<div id="introduction-to-mueller-report" class="section level1">
+<h1>Introduction to Mueller Report</h1>
 <p>Volume 1 of Mueller Report starts with Russian interference in 2016 US Presidential Elections. Russia did so in two Ways.</p>
 <p>The first was a campaign by the IRA that used social media tools like facebook and twitter with the goal of changing public opinion. While there were some retweets by Trump and his campaign officials from these accounts there wasn’t much direct communication.</p>
 <p>The second form was to use Russian intelligence to hack hillary clinton emails. These hacked emails were released with help of wikileaks and guccifer 2.0. Trump’s campaign deliberately tried to find other hacked emails and encourages Russia to do so public. However, the campaign could not find additional information on these emails.</p>
 <p>The rest of Volume 1 discusses the numerous relationship between trump campaign officials and Russians. It’s this part that will be the basis for most of the results below.</p>
 </div>
-<div id="the-data" class="section level2">
-<h2>The data</h2>
+<div id="the-data" class="section level1">
+<h1>The data</h1>
 <p>Volume 1 consists of 199 pages including foot-notes and appendices. I found a machine readable version <a href="https://www.kaggle.com/paultimothymooney/mueller-report">here</a>. I split the text into sentences and looked at whether a person’s name was included in that sentence. This left me with a sentence by name matrix that is the starting point of my analysis. There are some drawbacks to this in that OCR does not immediately distinguish sentences. In addition it often groups footnotes with last line of sentences in a page. But it seemed like a good starting point so went ahead.</p>
 <p>Below are the top 20 most common occurring names. <img src="/post/2019-07-20-mueller-report-volume-1-a-network-analysis_files/figure-html/freqplot-1.png" width="672" /></p>
 <p>Papadopulos, Manafort, Kushner, Cohen, Trump JR, and Flynn are all in the top. Considering they were all, to varying degrees, worked in the Trump campaign this makes sense. We also see some Russian names such as Dmitriev, Kilimnik, and Kislyak. I’ll explain they’re contacts below.</p>
