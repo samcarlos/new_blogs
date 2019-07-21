@@ -194,27 +194,6 @@ plot(ts_relations_plot+theme(axis.text=element_text(size=12),
 
 ```
 
-* *Group 1*
-    + agalarov, aras, goldstone, samochornov, veselnitskaya, kaveladze, akhmetshin
-* *Group 2*
-    + klokov, erchova
-* *Group 3*
-    + rtskhiladze, rozov
-* *Group 5*
-    + peskov
-* *Group 4*
-    + mifsud, polonskaya, timofeev, millian
-* *Group 5*
-    + klimentov, poliakova, peskov, dvorkovich
-* *Group 6*
-    + oknyansky, rasin
-* *Group 7*
-    + kilimnik, deripaska, boyarkin, oganov
-* *Group 8*
-    + kislyak, gorkov
-* *Group 9*
-    + aven, dmitriev
-
 #Conclusions on Analysis
 I think doing text analysis before reading report was very helpful to understanding it. There are just so many connections going on it's hard to keep track. Running some basic clustering techniques as described above helped me zone into what to look for while reading the report. 
 
