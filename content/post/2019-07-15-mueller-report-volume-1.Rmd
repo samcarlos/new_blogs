@@ -16,6 +16,8 @@ knitr::opts_chunk$set(echo = FALSE)
 
 
 
+![calm down and have another cup of coffee](/post/2019-07-15-mueller-report-volume-1_files/35aykq.jpg)
+[code](https://github.com/samcarlos/mueller_report)
 
 ## TLDR 
 There are a lot of Russian’s talking to a lot of Trump campaign members in Mueller report. There are so many it’s tough to get your head around it all. In this post I attempted some network analysis on the relations between campaign officials and Russians. I found that one can ‘compress’ Russian involvement into 9 (mostly) distinct groups. I then summarize these points of contacts. 
@@ -218,5 +220,3 @@ plot(ts_relations_plot+theme(axis.text=element_text(size=12),
     + kislyak, gorkov
 * *Group 9*
     + aven, dmitriev
-
-[code](https://github.com/samcarlos/mueller_report)
